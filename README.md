@@ -2,7 +2,7 @@
 
 **Proof that a human was there.**
 
-**Live demo:** [proof-of-experience.vercel.app](https://proof-of-experience.vercel.app)  
+**Live demo:** [proof-of-experience.vercel.app](https://proof-of-experience.vercel.app)
 **Repository:** [github.com/subhajitlucky/proof-of-experience](https://github.com/subhajitlucky/proof-of-experience)
 
 Proof of Experience is an evidence and attestation layer for human-lived experience. A creator assembles a record of claims, media, participants, place and time. The application hashes the record, seals it with Ed25519, invites independent witnesses to sign specific claims, and publishes a verification page that shows what evidence exists, what was attested, and whether anything changed after signing.
@@ -537,7 +537,8 @@ These are deliberate MVP limits, not hidden behaviour:
 
 The hosted demo uses:
 
-- Vercel project `proof-of-experience`
+- Vercel project `proof-of-experience`, connected to `main` on GitHub for production deployments
+- Preview branch deployments disabled in `vercel.json`
 - Neon PostgreSQL through the Vercel Marketplace integration
 - A private Vercel Blob store through the Vercel integration
 - `STORAGE_DRIVER=vercel-blob` and the generated `BLOB_READ_WRITE_TOKEN`
