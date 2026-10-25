@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: proof-of-experience-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: proof
+      POSTGRES_PASSWORD: proof
+      POSTGRES_DB: proof_of_experience
+    ports:
+      - "54329:5432"
+    volumes:
+      - proof_of_experience_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U proof -d proof_of_experience"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  proof_of_experience_pgdata:

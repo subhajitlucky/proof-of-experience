@@ -1,0 +1,255 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  user
+  admin
+}
+
+enum Category {
+  craft
+  travel
+  food
+  art
+  event
+  other
+}
+
+enum Visibility {
+  private
+  unlisted
+  public
+}
+
+enum ExperienceStatus {
+  draft
+  evidence_pending
+  witness_verified
+  published
+  flagged
+  revoked
+}
+
+enum TrustLevel {
+  self_attested
+  location_verified
+  device_verified
+  witness_verified
+  fully_verified
+}
+
+enum EvidenceType {
+  record_created
+  media_uploaded
+  location_confirmed
+  device_attested
+  witness_invited
+  witness_attested
+  published
+  unpublished
+  flagged
+  revoked
+  restored
+}
+
+enum AuditAction {
+  flag
+  unflag
+  revoke
+  restore
+}
+
+model User {
+  id                  String       @id @default(cuid())
+  name                String       @db.VarChar(120)
+  email               String       @unique @db.VarChar(254)
+  handle              String       @unique @db.VarChar(40)
+  bio                 String?      @db.Text
+  avatarUrl           String?      @db.Text
+  passwordHash        String?      @db.Text
+  publicKey           String       @db.Text
+  encryptedPrivateKey String?      @db.Text
+  role                Role         @default(user)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  experiences         Experience[]
+
+  @@index([createdAt])
+}
+
+model Experience {
+  id                  String           @id @default(cuid())
+  creatorId           String
+  creator             User             @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  slug                String           @unique @db.VarChar(140)
+  title               String           @db.VarChar(160)
+  summary             String           @db.Text
+  category            Category
+  locationName        String           @db.VarChar(160)
+  latitudeEnc         String?          @db.Text
+  longitudeEnc        String?          @db.Text
+  showExactLocation   Boolean          @default(false)
+  startAt             DateTime
+  endAt               DateTime
+  visibility          Visibility       @default(private)
+  status              ExperienceStatus @default(draft)
+  trustLevel          TrustLevel       @default(self_attested)
+  recordHash          String?          @db.VarChar(64)
+  signature           String?          @db.Text
+  publicKey           String?          @db.Text
+  signedAt            DateTime?
+  sealedVersion       Int              @default(0)
+  locationConfirmedAt DateTime?
+  deviceAttestedAt    DateTime?
+  publishedAt         DateTime?
+  flaggedAt           DateTime?
+  flagReason          String?          @db.Text
+  revokedAt           DateTime?
+  isDemo              Boolean          @default(false)
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+  claims              Claim[]
+  media               MediaAsset[]
+  participants        Participant[]
+  witnesses           Witness[]
+  attestations        Attestation[]
+  evidenceEvents      EvidenceEvent[]
+
+  @@index([creatorId, updatedAt])
+  @@index([status, visibility])
+  @@index([isDemo, publishedAt])
+}
+
+model Claim {
+  id           String        @id @default(cuid())
+  experienceId String
+  experience   Experience    @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  position     Int
+  text         String        @db.Text
+  evidence     String?       @db.Text
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  witnesses    Witness[]
+  attestations Attestation[]
+
+  @@unique([experienceId, position])
+  @@index([experienceId])
+}
+
+model MediaAsset {
+  id              String      @id @default(cuid())
+  experienceId    String
+  experience      Experience  @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  storageKey      String      @db.Text
+  fileName        String      @db.VarChar(255)
+  mimeType        String      @db.VarChar(80)
+  size            Int
+  sha256          String      @db.VarChar(64)
+  capturedAt      DateTime?
+  exif            Json?
+  gpsPresent      Boolean     @default(false)
+  latitudeEnc     String?     @db.Text
+  longitudeEnc    String?     @db.Text
+  isCover         Boolean     @default(false)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([experienceId])
+}
+
+model Participant {
+  id           String     @id @default(cuid())
+  experienceId String
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  position     Int
+  name         String     @db.VarChar(120)
+  role         String     @db.VarChar(120)
+  email        String?    @db.VarChar(254)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  @@unique([experienceId, position])
+  @@index([experienceId])
+}
+
+model Witness {
+  id                  String       @id @default(cuid())
+  experienceId        String
+  experience          Experience   @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  claimId             String
+  claim               Claim        @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  invitedName         String       @db.VarChar(120)
+  email               String       @db.VarChar(254)
+  normalizedEmail     String       @db.VarChar(254)
+  tokenHash           String       @unique @db.VarChar(64)
+  tokenExpiresAt      DateTime
+  publicKey           String       @db.Text
+  encryptedPrivateKey String       @db.Text
+  lastViewedAt        DateTime?
+  usedAt              DateTime?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  attestation         Attestation?
+
+  @@unique([experienceId, normalizedEmail, claimId])
+  @@index([experienceId, normalizedEmail])
+  @@index([tokenExpiresAt])
+}
+
+model Attestation {
+  id               String     @id @default(cuid())
+  experienceId     String
+  experience       Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  claimId          String
+  claim            Claim      @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  witnessId        String     @unique
+  witness          Witness    @relation(fields: [witnessId], references: [id], onDelete: Cascade)
+  confirmedName    String     @db.VarChar(120)
+  relationship     String     @db.VarChar(200)
+  witnessPublicKey String     @db.Text
+  signedRecordHash String     @db.VarChar(64)
+  signature        String     @db.Text
+  attestedAt       DateTime
+  createdAt        DateTime   @default(now())
+
+  @@index([experienceId])
+  @@index([claimId])
+}
+
+model EvidenceEvent {
+  id           String       @id @default(cuid())
+  experienceId String
+  experience   Experience   @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  sequence     Int
+  type         EvidenceType
+  actorId      String?
+  payload      Json?
+  occurredAt   DateTime
+  previousHash String?      @db.VarChar(64)
+  eventHash    String       @db.VarChar(64)
+  createdAt    DateTime     @default(now())
+
+  @@unique([experienceId, sequence])
+  @@index([experienceId, sequence])
+}
+
+model AuditLog {
+  id         String      @id @default(cuid())
+  actorId    String      @db.VarChar(64)
+  actorName  String      @db.VarChar(120)
+  action     AuditAction
+  targetType String      @db.VarChar(40)
+  targetId   String      @db.VarChar(64)
+  reason     String?     @db.Text
+  metadata   Json?
+  createdAt  DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([targetType, targetId])
+}
