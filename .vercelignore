@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.data/
+storage/
+tests/
+playwright-report/
+test-results/
+.next/
+docs/
+scripts/
+AGENTS.md

@@ -98,14 +98,45 @@ class S3StorageAdapter implements StorageAdapter {
   }
 }
 
+
+class VercelBlobStorageAdapter implements StorageAdapter {
+  async put(key: string, data: Buffer, contentType: string): Promise<void> {
+    const { put } = await import("@vercel/blob");
+    await put(key, data, {
+      access: "private",
+      contentType,
+      addRandomSuffix: false,
+      allowOverwrite: false,
+      cacheControlMaxAge: 60,
+    });
+  }
+
+  async get(key: string): Promise<Buffer> {
+    const { get } = await import("@vercel/blob");
+    const result = await get(key, { access: "private", useCache: false });
+    if (!result || result.statusCode !== 200) {
+      throw new Error("Blob not found");
+    }
+    return Buffer.from(await new Response(result.stream).arrayBuffer());
+  }
+
+  async delete(key: string): Promise<void> {
+    const { del } = await import("@vercel/blob");
+    await del(key);
+  }
+}
+
 let adapter: StorageAdapter | null = null;
 
 export function getStorage(): StorageAdapter {
   if (!adapter) {
+    const driver = (process.env.STORAGE_DRIVER || "local").toLowerCase();
     adapter =
-      (process.env.STORAGE_DRIVER || "local").toLowerCase() === "s3"
+      driver === "s3"
         ? new S3StorageAdapter()
-        : new LocalStorageAdapter();
+        : driver === "vercel-blob"
+          ? new VercelBlobStorageAdapter()
+          : new LocalStorageAdapter();
   }
   return adapter;
 }

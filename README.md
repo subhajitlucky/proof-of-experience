@@ -2,6 +2,9 @@
 
 **Proof that a human was there.**
 
+**Live demo:** [proof-of-experience.vercel.app](https://proof-of-experience.vercel.app)  
+**Repository:** [github.com/subhajitlucky/proof-of-experience](https://github.com/subhajitlucky/proof-of-experience)
+
 Proof of Experience is an evidence and attestation layer for human-lived experience. A creator assembles a record of claims, media, participants, place and time. The application hashes the record, seals it with Ed25519, invites independent witnesses to sign specific claims, and publishes a verification page that shows what evidence exists, what was attested, and whether anything changed after signing.
 
 It is not a blockchain, a social network, a generic notary, or a claim of absolute truth. A valid seal means the record matches its signed hash and the signer's custody is known. It does not prove that every statement is true, and it is not a legal signature.
@@ -136,7 +139,7 @@ Copy `.env.example` to `.env`. Required values:
 | `DATABASE_URL` | PostgreSQL connection string. |
 | `RECORD_SIGNING_PRIVATE_KEY` | Base64 PKCS#8 Ed25519 private key used to seal records. |
 | `DATA_ENCRYPTION_KEY` | Base64 32-byte AES-256-GCM key for coordinates and private signing material. |
-| `STORAGE_DRIVER` | `local` (default) or `s3`. |
+| `STORAGE_DRIVER` | `local` (default), `s3`, or `vercel-blob`. |
 
 Optional values:
 
@@ -151,6 +154,7 @@ Optional values:
 | `S3_ACCESS_KEY_ID` | S3 access key. |
 | `S3_SECRET_ACCESS_KEY` | S3 secret key. |
 | `S3_FORCE_PATH_STYLE` | `true` for path-style S3 endpoints. |
+| `BLOB_READ_WRITE_TOKEN` | Vercel Blob token when `STORAGE_DRIVER=vercel-blob`. |
 | `ALLOW_DEMO_SEED` | Must be `true` to seed demo accounts with `NODE_ENV=production`. |
 
 Generate the three secret values with:
@@ -269,6 +273,7 @@ The `StorageAdapter` interface has two implementations:
 
 - Local filesystem storage under `STORAGE_LOCAL_DIR`.
 - S3-compatible storage using the AWS SDK, with optional custom endpoint and path-style addressing.
+- Private Vercel Blob storage for the hosted deployment. Set `STORAGE_DRIVER=vercel-blob` and provide `BLOB_READ_WRITE_TOKEN` (or Vercel OIDC credentials).
 
 Media is re-encoded with `sharp` after EXIF is extracted. This removes embedded EXIF/GPS metadata before storage and hashing. The stored file's SHA-256, MIME type, capture date and privacy-safe EXIF summary are committed into the record. Original uploaded bytes are not retained.
 
@@ -454,6 +459,14 @@ npm run test:e2e
 
 The Playwright configuration starts its own development server on port **3101** and uses the seeded demo account. Stop any other `next dev` process for this repository before running it; Next.js 16 permits one development server per project.
 
+The same happy path can be run against the hosted deployment:
+
+```bash
+PLAYWRIGHT_BASE_URL=https://proof-of-experience.vercel.app npx playwright test
+```
+
+That run creates and deletes a test record through the live Neon database and Vercel Blob store.
+
 ---
 
 ## 3-minute demo script
@@ -502,6 +515,7 @@ These are deliberate MVP limits, not hidden behaviour:
 - **Deletion is destructive.** Record and account deletion remove evidence rather than preserving a revocation tombstone. Revocation is the durable public alternative.
 - **Single signing key.** The trusted signer check compares against the currently configured server public key. Changing that key without a rotation plan causes existing records to show as altered.
 - **Rate and pagination.** No shared rate store, pagination or background jobs.
+- **Vercel function request limit.** Vercel serverless functions cap request bodies at roughly 4.5 MB. The local app accepts up to 8 MB per image, but a hosted Vercel deployment should use compressed images or a direct/client upload workflow for larger media. A production implementation would add resumable direct-to-Blob uploads.
 - **Legal scope.** No signature here is a legal or qualified electronic signature.
 
 ---
@@ -510,13 +524,27 @@ These are deliberate MVP limits, not hidden behaviour:
 
 - Set `APP_URL`, `NEXT_PUBLIC_APP_URL` and `NEXTAUTH_URL` to the external HTTPS origin. Set them before `npm run build`; rebuild if the public URL changes.
 - Use a strong random `NEXTAUTH_SECRET`, a generated Ed25519 signing key and a 32-byte data encryption key. Back them up through a secrets manager.
-- Set `STORAGE_DRIVER=s3` and complete the S3 variables for production media. Object buckets should be private; the app serves media through its authorization gate.
+- For Vercel, use a private Vercel Blob store and `STORAGE_DRIVER=vercel-blob`. The Vercel Blob integration supplies `BLOB_READ_WRITE_TOKEN`. For another host, set `STORAGE_DRIVER=s3` and complete the S3 variables. Object buckets should be private; the app serves media through its authorization gate.
+- The app was deployed with Vercel Neon Postgres and a private Vercel Blob store. Set production env values before building; `NEXT_PUBLIC_APP_URL` is embedded at build time, and server-side URLs prefer `APP_URL`.
 - Run `npm run db:deploy` before starting. The seed script refuses to create demo credentials in production unless `ALLOW_DEMO_SEED=true` is explicitly set.
 - Add an email delivery provider for witness invitations if tokens are not to be manually distributed. Do not log invitation URLs in production.
 - Place the app behind TLS. The same-origin check supports `x-forwarded-host` and `x-forwarded-proto`.
 - Use a shared rate-limit store (for example Redis) if the app runs with more than one server process.
 - Replace server-held signing with a creator-held key flow, and add external anchoring, before making stronger provenance claims.
 - Pin or rotate dependencies with a security review. `npm audit` is clean at the time of this build.
+
+### Reference deployment
+
+The hosted demo uses:
+
+- Vercel project `proof-of-experience`
+- Neon PostgreSQL through the Vercel Marketplace integration
+- A private Vercel Blob store through the Vercel integration
+- `STORAGE_DRIVER=vercel-blob` and the generated `BLOB_READ_WRITE_TOKEN`
+- Production-only signing and encryption keys
+- A custom alias at `https://proof-of-experience.vercel.app`
+
+Before deploying new schema changes, run migrations against the unpooled Neon connection. The runtime `DATABASE_URL` is the pooled connection. The integration provides `DATABASE_URL_UNPOOLED`; use that for `prisma migrate deploy`.
 
 The interface deliberately says **evidence, not truth**.
 

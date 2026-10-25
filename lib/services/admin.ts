@@ -1,6 +1,6 @@
 import type { AuditAction, ExperienceStatus } from "@prisma/client";
 import { ApiError } from "../api";
-import { prisma } from "../db";
+import { INTERACTIVE_TRANSACTION_OPTIONS, prisma } from "../db";
 import { appendEvidenceEvent } from "../evidence";
 import {
   analyzeIntegrity,
@@ -170,5 +170,5 @@ export async function applyAdminAction(input: {
           await requireFullExperience(tx, current.id),
         ).altered,
     };
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 }

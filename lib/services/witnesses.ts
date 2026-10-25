@@ -8,7 +8,7 @@ import {
   normalizeEmail,
   normalizeName,
 } from "../crypto";
-import { prisma } from "../db";
+import { INTERACTIVE_TRANSACTION_OPTIONS, prisma } from "../db";
 import { appendEvidenceEvent } from "../evidence";
 import { generateEd25519KeyPair, signAttestation } from "../keys";
 import {
@@ -138,7 +138,7 @@ export async function inviteWitness(
     await sealExperience(tx, experienceId);
 
     return witness;
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 
   const attestationUrl = `${publicAppUrl()}/attest/${rawToken}`;
   if (process.env.NODE_ENV === "development") {
@@ -423,7 +423,10 @@ export async function submitAttestation(
           trustLevel: seal.trustLevel,
         };
       },
-      { isolationLevel: Prisma.TransactionIsolationLevel.Serializable },
+      {
+        ...INTERACTIVE_TRANSACTION_OPTIONS,
+        isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
+      },
     );
 
     return { state: "attested", ...result };

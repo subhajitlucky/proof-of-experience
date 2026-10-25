@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  serverExternalPackages: ["@prisma/client", "@aws-sdk/client-s3", "exifr", "sharp"],
+  serverExternalPackages: ["@prisma/client", "@aws-sdk/client-s3", "exifr", "sharp", "@vercel/blob"],
   turbopack: {
     rules: {
       "*.css": {

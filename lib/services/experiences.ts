@@ -1,5 +1,5 @@
 import { Prisma, type Category, type Visibility } from "@prisma/client";
-import { prisma } from "../db";
+import { INTERACTIVE_TRANSACTION_OPTIONS, prisma } from "../db";
 import { ApiError } from "../api";
 import { encryptNumber } from "../crypto";
 import type { PreparedMedia } from "../media";
@@ -194,7 +194,7 @@ export async function createExperience(
       }
 
       return created;
-    });
+    }, INTERACTIVE_TRANSACTION_OPTIONS);
 
     return { id: experience.id, slug: experience.slug };
   } catch (error) {
@@ -296,7 +296,7 @@ export async function updateDraftExperience(
         })),
       });
     }
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 
   return { id: experienceId };
 }
@@ -397,7 +397,7 @@ export async function addMediaToDraft(
           },
         });
       }
-    });
+    }, INTERACTIVE_TRANSACTION_OPTIONS);
   } catch (error) {
     await deleteStoredFiles(storedKeys);
     throw error;
@@ -466,7 +466,7 @@ export async function addExperienceEvidence(
     if (after.recordHash) {
       await sealExperience(tx, experienceId);
     }
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 
   return { type: input.type };
 }
@@ -541,7 +541,7 @@ export async function setPublishState(
       trustLevel: seal.trustLevel,
       recordHash: seal.recordHash,
     };
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 }
 
 export async function revokeExperienceByOwner(
@@ -574,7 +574,7 @@ export async function revokeExperienceByOwner(
       payload: { source: "creator" },
     });
     await sealExperience(tx, experienceId);
-  });
+  }, INTERACTIVE_TRANSACTION_OPTIONS);
 
   return { status: "revoked" };
 }

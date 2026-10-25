@@ -16,3 +16,10 @@ export const prisma =
 if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
+
+/** Interactive transactions include remote Neon round trips; use a bounded,
+ * production-safe timeout instead of Prisma's short default. */
+export const INTERACTIVE_TRANSACTION_OPTIONS = {
+  maxWait: 10_000,
+  timeout: 30_000,
+} as const;
