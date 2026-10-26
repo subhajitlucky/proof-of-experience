@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { displayFont, uiFont } from "./fonts";
+import { displayFont, monoFont, uiFont } from "./fonts";
 import "./globals.css";
 
 const appUrl = process.env.APP_URL || process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a3529",
+  themeColor: "#131518",
   colorScheme: "light",
 };
 
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${uiFont.variable} h-full antialiased`}
+      className={`${displayFont.variable} ${uiFont.variable} ${monoFont.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full">

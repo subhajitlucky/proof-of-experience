@@ -30,6 +30,7 @@ export function renderBadgeSvg(input: BadgeInput): string {
   let detail = "Witness-attested record · inspect the evidence";
   let stampTop = "RECORD";
   let stampMain = "SEALED";
+  let accent = "#1b31c8";
 
   if (input.altered) {
     eyebrow = "RECORD INTEGRITY ALERT";
@@ -37,12 +38,14 @@ export function renderBadgeSvg(input: BadgeInput): string {
     detail = `Trust level: ${input.trustLabel} · badge suspended`;
     stampTop = "SEAL";
     stampMain = "SUSPENDED";
+    accent = "#101215";
   } else if (input.status === "revoked") {
     eyebrow = "PUBLIC REGISTRY / STATUS";
     headline = "Record revoked";
     detail = `Trust level: ${input.trustLabel} · prior evidence remains visible`;
     stampTop = "STATUS";
     stampMain = "REVOKED";
+    accent = "#101215";
   } else if (input.status === "flagged") {
     eyebrow = "PUBLIC REGISTRY / STATUS";
     headline = "Flagged for review";
@@ -67,20 +70,20 @@ export function renderBadgeSvg(input: BadgeInput): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200" role="img" aria-labelledby="badge-title badge-desc">
   <title id="badge-title">${safeEyebrow}: ${safeHeadline}</title>
   <desc id="badge-desc">${safeDetail}. ${safeVerify}</desc>
-  <rect width="640" height="200" fill="#0a3529"/>
-  <rect x="10.5" y="10.5" width="619" height="179" fill="none" stroke="#a5bcae" stroke-opacity="0.55"/>
-  <rect x="17.5" y="17.5" width="605" height="165" fill="none" stroke="#a5bcae" stroke-opacity="0.18"/>
-  <rect x="0" y="0" width="6" height="200" fill="#0d5a43"/>
-  <text x="34" y="47" fill="#a5bcae" font-family="Verdana, Geneva, sans-serif" font-size="9" letter-spacing="2.5">${safeEyebrow}</text>
-  <text x="34" y="102" fill="#f5f8f1" font-family="Georgia, 'Times New Roman', serif" font-size="38" letter-spacing="-0.8">${safeHeadline}</text>
-  <text x="34" y="128" fill="#c7d7cc" font-family="Verdana, Geneva, sans-serif" font-size="10" letter-spacing="0.2">${safeDetail}</text>
-  <line x1="34" y1="155.5" x2="606" y2="155.5" stroke="#a5bcae" stroke-opacity="0.32"/>
-  <text x="34" y="177" fill="#a5bcae" font-family="Verdana, Geneva, sans-serif" font-size="9" letter-spacing="0.4">${safeVerify}</text>
-  <text x="606" y="177" text-anchor="end" fill="#6f8d7b" font-family="Verdana, Geneva, sans-serif" font-size="8" letter-spacing="1.2">EVIDENCE, NOT TRUTH</text>
-  <rect x="513.5" y="54.5" width="91" height="73" fill="none" stroke="#c7d7cc"/>
-  <rect x="519" y="60" width="80" height="62" fill="none" stroke="#a5bcae" stroke-opacity="0.45"/>
-  <text x="559" y="80" text-anchor="middle" fill="#a5bcae" font-family="Verdana, Geneva, sans-serif" font-size="7" letter-spacing="1.5">${safeStampTop}</text>
-  <text x="559" y="101" text-anchor="middle" fill="#f5f8f1" font-family="Georgia, 'Times New Roman', serif" font-size="16">${safeStampMain}</text>
-  <text x="559" y="113" text-anchor="middle" fill="#6f8d7b" font-family="Verdana, Geneva, sans-serif" font-size="6" letter-spacing="1.2">POE / ED25519</text>
+  <rect width="640" height="200" fill="#f7f8f9"/>
+  <rect x="0.5" y="0.5" width="639" height="199" fill="none" stroke="#101215"/>
+  <rect x="0" y="0" width="7" height="200" fill="${accent}"/>
+  <rect x="20.5" y="20.5" width="599" height="159" fill="none" stroke="#d5dade"/>
+  <text x="38" y="48" fill="#1b31c8" font-family="Menlo, Consolas, monospace" font-size="9" letter-spacing="2.2">${safeEyebrow}</text>
+  <text x="38" y="99" fill="#101215" font-family="Helvetica, Arial, sans-serif" font-size="37" font-weight="700" letter-spacing="-1.4">${safeHeadline}</text>
+  <text x="38" y="124" fill="#545c65" font-family="Helvetica, Arial, sans-serif" font-size="10.5" letter-spacing="0.1">${safeDetail}</text>
+  <line x1="38" y1="153.5" x2="601" y2="153.5" stroke="#d5dade"/>
+  <text x="38" y="175" fill="#545c65" font-family="Menlo, Consolas, monospace" font-size="9" letter-spacing="0.2">${safeVerify}</text>
+  <text x="601" y="175" text-anchor="end" fill="#8c949e" font-family="Menlo, Consolas, monospace" font-size="7" letter-spacing="1">EVIDENCE, NOT TRUTH</text>
+  <rect x="501.5" y="47.5" width="103" height="80" fill="#ffffff" stroke="${accent}"/>
+  <rect x="507.5" y="53.5" width="91" height="68" fill="none" stroke="#d5dade"/>
+  <text x="553" y="75" text-anchor="middle" fill="${accent}" font-family="Menlo, Consolas, monospace" font-size="7" letter-spacing="1.4">${safeStampTop}</text>
+  <text x="553" y="96" text-anchor="middle" fill="#101215" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700">${safeStampMain}</text>
+  <text x="553" y="109" text-anchor="middle" fill="#8c949e" font-family="Menlo, Consolas, monospace" font-size="5.5" letter-spacing="1">POE / ED25519</text>
 </svg>`;
 }

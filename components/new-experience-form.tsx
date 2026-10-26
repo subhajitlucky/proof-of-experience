@@ -745,7 +745,7 @@ export function NewExperienceForm() {
       </div>
 
       <aside className="self-start lg:sticky lg:top-24">
-        <div className="panel panel--forest">
+        <div className="panel panel--graphite">
           <div className="panel__header">
             <div>
               <p className="eyebrow">What happens next</p>

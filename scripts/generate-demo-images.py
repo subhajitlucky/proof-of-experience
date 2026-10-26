@@ -12,20 +12,22 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 OUT = Path(__file__).resolve().parent.parent / "prisma" / "seed-assets"
 OUT.mkdir(parents=True, exist_ok=True)
 
-IVORY = "#e7eee7"
-PAPER = "#f1f5ef"
-INK = "#122219"
-SLATE = "#3a4b40"
-MUTED = "#62756a"
-ACCENT = "#0d5a43"
-CLAY = "#c8c4b2"
-SAND = "#d3d8cb"
-CREAM = "#e2e9e1"
+IVORY = "#eef0f2"
+PAPER = "#f7f8f9"
+INK = "#101215"
+SLATE = "#3b4149"
+MUTED = "#646b74"
+ACCENT = "#1b31c8"
+ACCENT_LIGHT = "#8f9bff"
+STEEL = "#aab2bc"
+CLAY = "#b9bec5"
+SAND = "#d8dce1"
+CREAM = "#e4e7ea"
 
-SERIF = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
-SERIF_BOLD = "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf"
-SANS = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-SANS_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+SANS = "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+SANS_BOLD = "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
+MONO = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+MONO_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
 
 SCALE = 2
 W, H = 1600, 1200
@@ -92,18 +94,18 @@ def seal(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int, text: str = "
         outline=ACCENT,
         width=max(1, int(0.65 * SCALE)),
     )
-    label_font = font(SANS_BOLD, 10)
+    label_font = font(MONO_BOLD, 10)
     spaced_text(draw, (cx - 16, cy - 7), text, ACCENT, label_font, spacing=3)
-    small = font(SANS, 7)
+    small = font(MONO, 7)
     spaced_text(draw, (cx - 20, cy + 11), "RECORD", ACCENT, small, spacing=2)
 
 
 def label_block(draw: ImageDraw.ImageDraw, title: str, place: str) -> None:
-    example = font(SANS, 12)
+    example = font(MONO, 12)
     spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, example, spacing=3)
-    title_font = font(SERIF, 40)
+    title_font = font(SANS_BOLD, 40)
     draw.text((90 * SCALE, 132 * SCALE), title, font=title_font, fill=INK)
-    place_font = font(SANS, 14)
+    place_font = font(MONO, 14)
     spaced_text(draw, (92, 200), place, MUTED, place_font, spacing=2)
 
 
@@ -158,7 +160,7 @@ for _ in range(28):
     length = rng.randint(10, 55)
     draw.line(
         [(x * SCALE, y * SCALE), ((x + length) * SCALE, (y + rng.randint(-22, 22)) * SCALE)],
-        fill="#6d6154",
+        fill="#5a6169",
         width=SCALE,
     )
 for _ in range(90):
@@ -167,15 +169,15 @@ for _ in range(90):
     radius = rng.randint(1, 3)
     draw.ellipse(
         [(x - radius) * SCALE, (y - radius) * SCALE, (x + radius) * SCALE, (y + radius) * SCALE],
-        fill="#6d6154",
+        fill="#5a6169",
     )
 draw.line(
     [(500 * SCALE, 1028 * SCALE), (1100 * SCALE, 1028 * SCALE)],
-    fill="#b7a78f",
+    fill="#aeb5bd",
     width=2 * SCALE,
 )
 seal(draw, 1390, 1040, 58)
-small = font(SANS, 10)
+small = font(MONO, 10)
 spaced_text(draw, (92, 1025), "CERAMICIST · ELEVEN-DAY FIRING · ASH GLAZE", MUTED, small, spacing=2)
 save_plate("kyoto-raku.png", image)
 
@@ -186,8 +188,8 @@ draw = ImageDraw.Draw(image)
 # Linen runner.
 draw.rectangle(
     [370 * SCALE, 300 * SCALE, 1230 * SCALE, 950 * SCALE],
-    fill="#2d2924",
-    outline="#554d42",
+    fill="#25292e",
+    outline="#555d66",
     width=SCALE,
 )
 # Plates.
@@ -205,7 +207,7 @@ for cx, cy, r in [(610, 555, 190), (945, 555, 190), (610, 815, 120), (945, 815, 
             (cx + r - 32) * SCALE,
             (cy + r - 32) * SCALE,
         ],
-        outline="#cfc3af",
+        outline="#cfd4da",
         width=SCALE,
     )
 # Food gestures in muted tones.
@@ -245,34 +247,34 @@ for x in [340, 1170]:
 # Glass and candle.
 draw.ellipse(
     [1090 * SCALE, 700 * SCALE, 1200 * SCALE, 860 * SCALE],
-    outline="#b9a990",
+    outline="#aeb5bd",
     width=2 * SCALE,
 )
 draw.arc(
     [1110 * SCALE, 730 * SCALE, 1180 * SCALE, 830 * SCALE],
     start=200,
     end=340,
-    fill="#d8c7ae",
+    fill="#cfd4da",
     width=2 * SCALE,
 )
 draw.rectangle([292 * SCALE, 500 * SCALE, 316 * SCALE, 760 * SCALE], fill=IVORY)
 draw.ellipse([287 * SCALE, 470 * SCALE, 321 * SCALE, 535 * SCALE], fill=ACCENT)
 # Label sits in the dark negative space.
-eyebrow = font(SANS, 12)
-spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, eyebrow, spacing=3)
-title_font = font(SERIF, 40)
+eyebrow = font(MONO, 12)
+spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT_LIGHT, eyebrow, spacing=3)
+title_font = font(SANS_BOLD, 40)
 draw.text((90 * SCALE, 132 * SCALE), "A winter table, Copenhagen", font=title_font, fill=IVORY)
-place_font = font(SANS, 14)
-spaced_text(draw, (92, 200), "COPENHAGEN, DENMARK · FEBRUARY 2026", "#b8ac9b", place_font, spacing=2)
+place_font = font(MONO, 14)
+spaced_text(draw, (92, 200), "COPENHAGEN, DENMARK · FEBRUARY 2026", "#aab2bc", place_font, spacing=2)
 draw.line(
     [(90 * SCALE, 292 * SCALE), ((W - 90) * SCALE, 292 * SCALE)],
-    fill="#5c5348",
+    fill="#555d66",
     width=SCALE,
 )
 for x, y in [(90, 1040), (1030, 1040), (1300, 1040)]:
-    draw.line([(x * SCALE, y * SCALE), ((x + 55) * SCALE, y * SCALE)], fill=MUTED, width=SCALE)
+    draw.line([(x * SCALE, y * SCALE), ((x + 55) * SCALE, y * SCALE)], fill=STEEL, width=SCALE)
 seal(draw, 1390, 1040, 58)
-small = font(SANS, 10)
+small = font(MONO, 10)
 spaced_text(draw, (92, 1025), "CHEF · EIGHT SEATS · WINTER PRODUCE", MUTED, small, spacing=2)
 save_plate("copenhagen-table.png", image)
 
@@ -281,7 +283,7 @@ save_plate("copenhagen-table.png", image)
 image = canvas(IVORY)
 draw = ImageDraw.Draw(image)
 draw.rectangle([0, 850 * SCALE, W * SCALE, H * SCALE], fill=SAND)
-draw.rectangle([0, 850 * SCALE, W * SCALE, 862 * SCALE], fill="#8e7b65")
+draw.rectangle([0, 850 * SCALE, W * SCALE, 862 * SCALE], fill="#8c949e")
 # Sun, flat disc.
 draw.ellipse([1110 * SCALE, 410 * SCALE, 1320 * SCALE, 620 * SCALE], fill=ACCENT)
 # Acacia tree.
@@ -345,26 +347,26 @@ draw.line([(546 * SCALE, 822 * SCALE), (510 * SCALE, 800 * SCALE)], fill=INK, wi
 for base_x in [1040, 1120, 1200, 1280]:
     draw.ellipse(
         [(base_x - 10) * SCALE, 945 * SCALE, (base_x + 4) * SCALE, 972 * SCALE],
-        fill="#7e6d5a",
+        fill="#5b636d",
     )
     draw.ellipse(
         [(base_x + 20) * SCALE, 975 * SCALE, (base_x + 34) * SCALE, 1002 * SCALE],
-        fill="#7e6d5a",
+        fill="#5b636d",
     )
 # Grid label and rule.
-eyebrow = font(SANS, 12)
+eyebrow = font(MONO, 12)
 spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, eyebrow, spacing=3)
-title_font = font(SERIF, 40)
+title_font = font(SANS_BOLD, 40)
 draw.text((90 * SCALE, 132 * SCALE), "Tracking wild dogs, Okavango", font=title_font, fill=INK)
-place_font = font(SANS, 14)
+place_font = font(MONO, 14)
 spaced_text(draw, (92, 200), "OKAVANGO DELTA, BOTSWANA · JULY 2026", MUTED, place_font, spacing=2)
 draw.line(
     [(90 * SCALE, 292 * SCALE), ((W - 90) * SCALE, 292 * SCALE)],
-    fill="#cfc4b2",
+    fill="#d5dade",
     width=SCALE,
 )
 seal(draw, 1390, 1040, 58)
-small = font(SANS, 10)
+small = font(MONO, 10)
 spaced_text(draw, (92, 1025), "WILDLIFE GUIDE · TEN FIELD DAYS · PACK OBSERVATION", MUTED, small, spacing=2)
 save_plate("okavango-wild-dogs.png", image)
 

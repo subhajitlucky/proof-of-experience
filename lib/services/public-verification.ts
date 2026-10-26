@@ -58,6 +58,36 @@ export async function getPublicVerification(
   };
 }
 
+export interface DemoRecordView {
+  document: VerificationDocument;
+  coverPublicUrl: string | null;
+}
+
+export async function getDemoRecords(): Promise<DemoRecordView[]> {
+  const candidates = (await prisma.experience.findMany({
+    where: {
+      isDemo: true,
+      visibility: "public",
+      status: "published",
+      publishedAt: { not: null },
+    },
+    orderBy: { publishedAt: "asc" },
+    take: 6,
+    include: experienceFullInclude,
+  })) as FullExperience[];
+
+  return candidates
+    .map((candidate) => {
+      const document = buildVerificationDocument(candidate);
+      const cover = candidate.media.find((asset) => asset.isCover) ?? candidate.media[0];
+      return {
+        document,
+        coverPublicUrl: cover ? `/api/media/${cover.id}` : null,
+      };
+    })
+    .filter((entry) => !entry.document.integrity.altered);
+}
+
 export async function getFeaturedDemo(): Promise<{
   document: VerificationDocument;
   coverPublicUrl: string | null;

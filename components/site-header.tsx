@@ -8,12 +8,12 @@ export async function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header__micro">
-        <div className="wrap flex items-center justify-between gap-6">
+        <div className="wrap-wide flex items-center justify-between gap-6">
           <span>Public evidence registry · access copy</span>
-          <span className="site-header__micro-alt">Evidence / attestation / integrity</span>
+          <span className="site-header__micro-alt">Ed25519 / SHA-256 / witness attested</span>
         </div>
       </div>
-      <div className="site-header__inner wrap">
+      <div className="site-header__inner wrap-wide">
         <Brand />
         <nav aria-label="Primary" className="site-nav">
           <Link href="/#how-it-works" className="nav-link site-header__optional site-header__optional--md">
@@ -22,8 +22,8 @@ export async function SiteHeader() {
           <Link href="/#scope" className="nav-link site-header__optional site-header__optional--lg">
             Scope
           </Link>
-          <Link href="/verify/demo-kyoto-raku" className="nav-link site-header__optional site-header__optional--sm">
-            Specimen
+          <Link href="/#cases" className="nav-link site-header__optional site-header__optional--sm">
+            Case index
           </Link>
           {user ? (
             <>

@@ -48,7 +48,7 @@ It is not a blockchain, a social network, a generic notary, or a claim of absolu
 
 ### Visual direction
 
-The interface is a **public evidence registry**, not a generic editorial landing page. It uses a deep evergreen passport cover, chalk and sage document fields, squared stamps, ruled ledger tables, and a Newsreader/Manrope type pairing. Verification records read as public registry sheets: the trust criteria are laid out horizontally, the evidence timeline is a numbered ledger, and alert states use dark ink fields instead of a second accent colour.
+The interface is a **forensic evidence dossier**, not a generic editorial landing page. It uses cool document paper, graphite file headers, a single cobalt accent, squared file stamps, ruled case tables, and a Bricolage Grotesque / Archivo / IBM Plex Mono type system. The landing page is image-led and tabular: a split specimen file, a protocol chain, a real case index, a three-column method, and a separate scope ledger. Verification records read as case files with a dark chain-of-custody rail; alert states use graphite fields instead of a second accent colour.
 
 The public verification route is `/verify/[slug]`. The witness flow is `/attest/[token]`.
 
@@ -558,4 +558,4 @@ The interface deliberately says **evidence, not truth**.
 
 ## Fonts and assets
 
-Newsreader and Manrope are self-hosted WOFF2 files. Their SIL Open Font License files are included in `public/fonts/`. Demo cover plates were generated for this repository by `scripts/generate-demo-images.py` and carry a Demo label. The test image in `tests/fixtures/print-studio.png` is also generated for this repository.
+Bricolage Grotesque, Archivo and IBM Plex Mono are self-hosted WOFF2 files. Their SIL Open Font License files are included in `public/fonts/`. Demo cover plates were generated for this repository by `scripts/generate-demo-images.py` and carry a Demo label. The test image in `tests/fixtures/print-studio.png` is also generated for this repository.
