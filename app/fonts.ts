@@ -3,27 +3,27 @@ import localFont from "next/font/local";
 export const displayFont = localFont({
   src: [
     {
-      path: "../public/fonts/fraunces-latin.woff2",
-      weight: "300 600",
+      path: "../public/fonts/newsreader-latin.woff2",
+      weight: "200 600",
       style: "normal",
     },
   ],
-  variable: "--font-fraunces",
+  variable: "--font-newsreader",
   display: "swap",
-  fallback: ["Georgia", "Times New Roman", "serif"],
+  fallback: ["Iowan Old Style", "Georgia", "Times New Roman", "serif"],
   adjustFontFallback: false,
 });
 
 export const uiFont = localFont({
   src: [
     {
-      path: "../public/fonts/public-sans-latin.woff2",
-      weight: "400 600",
+      path: "../public/fonts/manrope-latin.woff2",
+      weight: "400 700",
       style: "normal",
     },
   ],
-  variable: "--font-public",
+  variable: "--font-manrope",
   display: "swap",
-  fallback: ["Helvetica Neue", "Arial", "sans-serif"],
+  fallback: ["Avenir Next", "Helvetica Neue", "Arial", "sans-serif"],
   adjustFontFallback: false,
 });

@@ -184,6 +184,7 @@ export default async function ExperienceDetailPage({ params }: PageProps) {
                 events={experience.evidenceEvents.map((event) => ({
                   type: event.type,
                   occurredAt: event.occurredAt.toISOString(),
+                  sequence: event.sequence,
                   eventHash: event.eventHash,
                   previousHash: event.previousHash,
                 }))}

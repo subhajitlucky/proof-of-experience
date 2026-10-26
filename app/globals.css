@@ -1,20 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-paper: #f6f0e5;
-  --color-paper-raised: #fbf8f2;
-  --color-paper-white: #fffdf8;
-  --color-ink: #1b1916;
-  --color-ink-soft: #34302a;
-  --color-muted: #665f54;
-  --color-faint: #72685b;
-  --color-rule: #d7cdbd;
-  --color-rule-dark: #8d8273;
-  --color-vermilion: #a6402f;
-  --color-vermilion-dark: #7f3024;
-  --color-vermilion-wash: #f1e1dc;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-public), "Helvetica Neue", Arial, sans-serif;
+  --color-paper: #e9efe9;
+  --color-paper-raised: #f7faf5;
+  --color-paper-white: #ffffff;
+  --color-ink: #122219;
+  --color-ink-soft: #2d4034;
+  --color-muted: #526759;
+  --color-faint: #5f7064;
+  --color-rule: #c7d4ca;
+  --color-rule-dark: #7e9386;
+  --color-accent: #0d5a43;
+  --color-accent-deep: #083d2e;
+  --color-accent-wash: #deede4;
+  --color-forest: #0a3529;
+  --color-forest-soft: #114a39;
+  --color-chalk: #f5f8f1;
+  --color-mint: #dbe9e0;
+  --color-moss: #a5bcae;
+  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -37,7 +42,7 @@ body {
   margin: 0;
   background: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-public), "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-manrope), "Avenir Next", "Helvetica Neue", Arial, sans-serif;
   font-size: 15px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -45,8 +50,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-vermilion);
-  color: var(--color-paper-white);
+  background: var(--color-accent);
+  color: var(--color-chalk);
 }
 
 h1,
@@ -54,7 +59,7 @@ h2,
 h3,
 h4,
 .font-display {
-  font-family: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, "Times New Roman", serif;
   font-weight: 400;
   letter-spacing: -0.025em;
   line-height: 1.04;
@@ -87,7 +92,7 @@ hr {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-vermilion);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
@@ -188,9 +193,9 @@ hr {
   height: 38px;
   place-items: center;
   flex: 0 0 auto;
-  border: 1px solid var(--color-vermilion);
+  border: 1px solid var(--color-accent);
   border-radius: 50%;
-  color: var(--color-vermilion);
+  color: var(--color-accent);
 }
 
 .brand__seal::before {
@@ -214,7 +219,7 @@ hr {
 }
 
 .brand__name {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 17px;
   letter-spacing: -0.015em;
   white-space: nowrap;
@@ -239,7 +244,7 @@ hr {
 }
 
 .eyebrow--accent {
-  color: var(--color-vermilion);
+  color: var(--color-accent);
 }
 
 .micro {
@@ -261,7 +266,7 @@ hr {
 }
 
 .link:hover {
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
   text-decoration-color: currentColor;
 }
 
@@ -304,14 +309,14 @@ hr {
 }
 
 .btn--accent {
-  background: var(--color-vermilion);
-  border-color: var(--color-vermilion);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: var(--color-paper-white);
 }
 
 .btn--accent:hover:not(:disabled) {
-  background: var(--color-vermilion-dark);
-  border-color: var(--color-vermilion-dark);
+  background: var(--color-accent-deep);
+  border-color: var(--color-accent-deep);
 }
 
 .btn--outline {
@@ -339,12 +344,12 @@ hr {
 
 .btn--danger {
   background: transparent;
-  border-color: var(--color-vermilion);
-  color: var(--color-vermilion-dark);
+  border-color: var(--color-accent);
+  color: var(--color-accent-deep);
 }
 
 .btn--danger:hover:not(:disabled) {
-  background: var(--color-vermilion);
+  background: var(--color-accent);
   color: var(--color-paper-white);
 }
 
@@ -377,7 +382,7 @@ hr {
 }
 
 .textlink:hover {
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
   text-decoration-color: currentColor;
 }
 
@@ -415,19 +420,19 @@ hr {
 }
 
 .status-pill--good::before {
-  background: var(--color-vermilion);
+  background: var(--color-accent);
 }
 
 .status-pill--warning {
-  color: var(--color-vermilion-dark);
-  border-color: color-mix(in srgb, var(--color-vermilion) 50%, white);
-  background: var(--color-vermilion-wash);
+  color: var(--color-accent-deep);
+  border-color: color-mix(in srgb, var(--color-accent) 50%, white);
+  background: var(--color-accent-wash);
 }
 
 .status-pill--danger {
   color: var(--color-paper-white);
-  border-color: var(--color-vermilion-dark);
-  background: var(--color-vermilion-dark);
+  border-color: var(--color-accent-deep);
+  background: var(--color-accent-deep);
 }
 
 .status-pill--danger::before {
@@ -475,8 +480,8 @@ hr {
 }
 
 .notice--accent {
-  border-left-color: var(--color-vermilion);
-  background: var(--color-vermilion-wash);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
 }
 
 .field-label {
@@ -514,8 +519,8 @@ hr {
 }
 
 .field:focus-visible {
-  border-color: var(--color-vermilion);
-  outline: 2px solid var(--color-vermilion);
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent);
   outline-offset: 1px;
 }
 
@@ -543,7 +548,7 @@ select.field {
   width: 16px;
   height: 16px;
   flex: 0 0 auto;
-  accent-color: var(--color-vermilion);
+  accent-color: var(--color-accent);
 }
 
 .check-row {
@@ -560,12 +565,12 @@ select.field {
 }
 
 .form-error {
-  border: 1px solid color-mix(in srgb, var(--color-vermilion) 50%, white);
-  border-left: 4px solid var(--color-vermilion);
-  background: var(--color-vermilion-wash);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 50%, white);
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-accent-wash);
   padding: 12px 14px;
   font-size: 13px;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .form-error ul {
@@ -593,7 +598,7 @@ select.field {
   height: 26px;
   border: 1px solid var(--color-rule-dark);
   border-radius: 50%;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 12px;
   color: var(--color-muted);
   flex: 0 0 auto;
@@ -626,7 +631,7 @@ select.field {
 
 .image-drop:hover,
 .image-drop:focus-within {
-  border-color: var(--color-vermilion);
+  border-color: var(--color-accent);
   background: var(--color-paper-white);
 }
 
@@ -695,7 +700,7 @@ select.field {
   border: 0;
   background: transparent;
   padding: 2px 4px;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
   font-size: 10px;
   font-weight: 600;
   cursor: pointer;
@@ -726,19 +731,19 @@ select.field {
 }
 
 .status-banner--warning {
-  border-left-color: var(--color-vermilion);
-  background: var(--color-vermilion-wash);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
 }
 
 .status-banner--danger {
-  border-color: var(--color-vermilion);
-  border-left-color: var(--color-vermilion);
-  background: var(--color-vermilion-wash);
+  border-color: var(--color-accent);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
 }
 
 .status-banner__title {
   margin: 2px 0 5px;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(21px, 2.4vw, 28px);
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -759,9 +764,9 @@ select.field {
   height: 96px;
   place-items: center;
   flex: 0 0 auto;
-  border: 1px solid var(--color-vermilion);
+  border: 1px solid var(--color-accent);
   border-radius: 50%;
-  color: var(--color-vermilion);
+  color: var(--color-accent);
   text-align: center;
   transform: rotate(-5deg);
 }
@@ -797,7 +802,7 @@ select.field {
 }
 
 .trust-seal__main {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 13px;
   line-height: 1.05;
   letter-spacing: -0.01em;
@@ -881,8 +886,8 @@ select.field {
 
 .criteria-item--met .criteria-mark {
   position: relative;
-  border-color: var(--color-vermilion);
-  background: var(--color-vermilion);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
 }
 
 .criteria-item--met .criteria-mark::after {
@@ -948,8 +953,8 @@ select.field {
 }
 
 .timeline__item:first-child .timeline__dot {
-  border-color: var(--color-vermilion);
-  background: var(--color-vermilion);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
 }
 
 .timeline__heading {
@@ -1065,14 +1070,14 @@ select.field {
 .claim__number {
   flex: 0 0 auto;
   margin-top: 1px;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 13px;
-  color: var(--color-vermilion);
+  color: var(--color-accent);
 }
 
 .claim__text {
   margin: 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(19px, 2.1vw, 24px);
   line-height: 1.35;
   letter-spacing: -0.015em;
@@ -1128,21 +1133,21 @@ select.field {
   min-height: 18px;
   margin-top: 6px;
   font-size: 11px;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .demo-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  border: 1px solid var(--color-vermilion);
+  border: 1px solid var(--color-accent);
   padding: 3px 8px;
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.12em;
   line-height: 1.4;
   text-transform: uppercase;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .avatar {
@@ -1154,7 +1159,7 @@ select.field {
   border: 1px solid var(--color-rule-dark);
   border-radius: 50%;
   background: var(--color-paper-raised);
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 12px;
   color: var(--color-ink);
   overflow: hidden;
@@ -1194,7 +1199,7 @@ select.field {
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 6px;
-  text-decoration-color: var(--color-vermilion);
+  text-decoration-color: var(--color-accent);
 }
 
 .app-header {
@@ -1241,7 +1246,7 @@ select.field {
 
 .form-section__title {
   margin: 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(24px, 2.6vw, 31px);
   line-height: 1.05;
 }
@@ -1310,7 +1315,7 @@ select.field {
 .ledger__title {
   display: block;
   margin-bottom: 5px;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 21px;
   line-height: 1.15;
   letter-spacing: -0.015em;
@@ -1319,7 +1324,7 @@ select.field {
 }
 
 .ledger__title:hover {
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
@@ -1420,7 +1425,7 @@ select.field {
 
 .stat__number {
   display: block;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 30px;
   line-height: 1.1;
   letter-spacing: -0.035em;
@@ -1482,7 +1487,7 @@ select.field {
 }
 
 .auth-brand .brand__seal {
-  color: var(--color-vermilion-wash);
+  color: var(--color-accent-wash);
   border-color: rgba(255, 253, 248, 0.45);
 }
 
@@ -1495,7 +1500,7 @@ select.field {
 
 .auth-brand__quote p {
   margin: 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.12;
   letter-spacing: -0.035em;
@@ -1568,7 +1573,7 @@ select.field {
 }
 
 .auth-mobile-brand .brand__seal {
-  color: var(--color-vermilion-wash);
+  color: var(--color-accent-wash);
   border-color: rgba(255, 253, 248, 0.45);
 }
 
@@ -1633,7 +1638,7 @@ select.field {
 
 .dash-title {
   margin: 6px 0 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(40px, 5vw, 64px);
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -1675,7 +1680,7 @@ select.field {
 }
 
 .back-link:hover {
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .attest-main {
@@ -1704,14 +1709,14 @@ select.field {
 }
 
 .claim-pull {
-  border-left: 2px solid var(--color-vermilion);
+  border-left: 2px solid var(--color-accent);
   padding: 4px 0 4px 22px;
   margin: 0;
 }
 
 .claim-pull__text {
   margin: 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: clamp(27px, 3.8vw, 42px);
   line-height: 1.18;
   letter-spacing: -0.03em;
@@ -1786,12 +1791,12 @@ select.field {
 }
 
 .destructive-zone {
-  border: 1px solid var(--color-vermilion);
+  border: 1px solid var(--color-accent);
   background: var(--color-paper-raised);
 }
 
 .destructive-zone .panel__header {
-  border-bottom-color: color-mix(in srgb, var(--color-vermilion) 32%, transparent);
+  border-bottom-color: color-mix(in srgb, var(--color-accent) 32%, transparent);
 }
 
 .admin-reason {
@@ -1840,7 +1845,7 @@ select.field {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .tabs {
@@ -1857,7 +1862,7 @@ select.field {
 }
 
 .tab--active {
-  border-bottom-color: var(--color-vermilion);
+  border-bottom-color: var(--color-accent);
 }
 
 .trust-legend {
@@ -2085,8 +2090,8 @@ select.field {
   aspect-ratio: 4 / 3;
   place-items: center;
   background: var(--color-paper-raised);
-  color: var(--color-vermilion);
-  font-family: var(--font-fraunces), Georgia, serif;
+  color: var(--color-accent);
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 42px;
 }
 
@@ -2153,7 +2158,7 @@ select.field {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--color-vermilion);
+  background: var(--color-accent);
 }
 
 .specimen__disclaimer {
@@ -2209,12 +2214,12 @@ select.field {
 .principle__number {
   font-family: var(--font-mono), monospace;
   font-size: 9px;
-  color: var(--color-vermilion);
+  color: var(--color-accent);
 }
 
 .principle__title {
   margin: 10px 0 0;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 19px;
   letter-spacing: -0.02em;
 }
@@ -2285,7 +2290,7 @@ select.field {
 .process__number {
   font-family: var(--font-mono), monospace;
   font-size: 10px;
-  color: var(--color-vermilion);
+  color: var(--color-accent);
   padding-top: 8px;
 }
 
@@ -2391,7 +2396,7 @@ select.field {
   top: 19px;
   width: 6px;
   height: 1px;
-  background: var(--color-vermilion);
+  background: var(--color-accent);
 }
 
 .home-dark__foot {
@@ -2546,11 +2551,11 @@ select.field {
 
 .demo-banner {
   border-bottom: 1px solid var(--color-rule);
-  background: var(--color-vermilion-wash);
+  background: var(--color-accent-wash);
   padding: 10px 13px;
   font-size: 11px;
   line-height: 1.55;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .demo-banner strong {
@@ -2618,7 +2623,7 @@ select.field {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-vermilion);
+  border: 1px solid var(--color-accent);
   border-radius: 50%;
   text-align: center;
   transform: rotate(-4deg);
@@ -2626,14 +2631,14 @@ select.field {
 }
 
 .seal-suspended strong {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   font-size: 13px;
   line-height: 1.2;
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .status-banner--pending {
-  border-left-color: var(--color-vermilion);
+  border-left-color: var(--color-accent);
 }
 
 .verify-grid {
@@ -2807,7 +2812,7 @@ select.field {
 }
 
 .integrity-checks dd[data-met="false"] {
-  color: var(--color-vermilion-dark);
+  color: var(--color-accent-deep);
 }
 
 .embed-preview {
@@ -2929,4 +2934,2571 @@ select.field {
 
 .section-heading h2 {
   margin-top: 16px;
+}
+
+/* ================================================================
+   REGISTRY EDITION — deep evergreen, chalk paper, squared artifacts
+   ================================================================ */
+
+body {
+  background: var(--color-paper);
+  font-family: var(--font-manrope), "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  font-feature-settings: "ss01" 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+}
+
+.eyebrow {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  color: var(--color-muted);
+}
+
+.eyebrow--accent {
+  color: var(--color-accent);
+}
+
+.eyebrow--light {
+  color: var(--color-moss);
+}
+
+.wrap {
+  width: min(100% - 40px, 1240px);
+}
+
+.wrap-wide {
+  width: min(100% - 40px, 1400px);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-chalk);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.site-header :focus-visible,
+.site-footer :focus-visible,
+.cover-hero :focus-visible,
+.closing-cover :focus-visible,
+.auth-brand :focus-visible {
+  outline-color: var(--color-chalk);
+}
+
+/* Brand */
+.brand {
+  gap: 10px;
+}
+
+.brand__seal {
+  width: 34px;
+  height: 34px;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  color: var(--color-accent);
+}
+
+.brand__seal::before {
+  inset: 3px;
+  width: auto;
+  height: auto;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  opacity: 0.3;
+}
+
+.brand__seal svg {
+  position: relative;
+  z-index: 1;
+}
+
+.brand__text {
+  gap: 4px;
+}
+
+.brand__name {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.brand__sub {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-faint);
+}
+
+/* Public header */
+.site-header {
+  background: var(--color-forest);
+  border-bottom: 1px solid rgba(245, 248, 241, 0.16);
+  color: var(--color-chalk);
+}
+
+.site-header__micro {
+  background: var(--color-forest-soft);
+  color: var(--color-moss);
+  padding-block: 7px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.site-header__inner {
+  min-height: 70px;
+}
+
+.site-header .brand__name {
+  color: var(--color-chalk);
+}
+
+.site-header .brand__sub {
+  color: var(--color-moss);
+}
+
+.site-header .brand__seal {
+  color: var(--color-chalk);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px 24px;
+}
+
+.site-header .nav-link,
+.app-header .nav-link {
+  min-height: 38px;
+  color: rgba(245, 248, 241, 0.7);
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.site-header .nav-link:hover,
+.app-header .nav-link:hover {
+  color: var(--color-chalk);
+}
+
+.site-header .nav-link[aria-current="page"],
+.app-header .nav-link[aria-current="page"] {
+  color: var(--color-chalk);
+  text-decoration-color: var(--color-moss);
+}
+
+/* Footer */
+.site-footer {
+  margin-top: 0;
+  border-top: 1px solid rgba(245, 248, 241, 0.16);
+  background: var(--color-forest);
+  color: var(--color-chalk);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: 45px;
+  padding-block: 64px 48px;
+}
+
+@media (min-width: 880px) {
+  .site-footer__inner {
+    grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+}
+
+.site-footer .brand__name,
+.site-footer .brand__sub {
+  color: var(--color-chalk);
+}
+
+.site-footer .brand__sub {
+  color: var(--color-moss);
+}
+
+.site-footer .brand__seal {
+  color: var(--color-chalk);
+}
+
+.footer-statement {
+  margin: 34px 0 0;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(42px, 5.5vw, 74px);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: var(--color-chalk);
+}
+
+.site-footer .eyebrow {
+  color: var(--color-moss);
+}
+
+.site-footer__copy {
+  display: grid;
+  gap: 34px;
+}
+
+@media (min-width: 700px) {
+  .site-footer__copy {
+    grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+  }
+}
+
+.footer-note {
+  max-width: 490px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgba(245, 248, 241, 0.62);
+}
+
+.site-footer__links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.site-footer .link {
+  color: rgba(245, 248, 241, 0.76);
+  font-size: 11px;
+  text-decoration-color: rgba(245, 248, 241, 0.25);
+}
+
+.site-footer .link:hover {
+  color: var(--color-chalk);
+  text-decoration-color: var(--color-chalk);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  border-top: 1px solid rgba(245, 248, 241, 0.14);
+  padding-block: 14px 22px;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(245, 248, 241, 0.56);
+}
+
+/* Application chrome */
+.app-header {
+  border-bottom: 1px solid rgba(245, 248, 241, 0.16);
+  background: var(--color-forest);
+  color: var(--color-chalk);
+}
+
+.app-header__inner {
+  min-height: 72px;
+}
+
+.app-header .brand__name {
+  color: var(--color-chalk);
+}
+
+.app-header .brand__sub {
+  color: var(--color-moss);
+}
+
+.app-header .brand__seal {
+  color: var(--color-chalk);
+}
+
+.app-header .account-name {
+  color: var(--color-moss);
+}
+
+.app-header .account-name span:first-child {
+  color: var(--color-chalk);
+}
+
+.app-header__account {
+  border-color: rgba(245, 248, 241, 0.18);
+}
+
+.app-header .avatar {
+  border-color: rgba(245, 248, 241, 0.35);
+  background: var(--color-forest-soft);
+  color: var(--color-chalk);
+}
+
+.app-header .nav-link {
+  color: rgba(245, 248, 241, 0.68);
+}
+
+.app-header .nav-link:hover,
+.app-header .nav-link[aria-current="page"] {
+  color: var(--color-chalk);
+}
+
+.app-header .btn--primary {
+  border-color: var(--color-chalk);
+  background: var(--color-chalk);
+  color: var(--color-forest);
+}
+
+.app-header .btn--primary:hover:not(:disabled) {
+  border-color: var(--color-mint);
+  background: var(--color-mint);
+}
+
+.app-header .btn--primary .btn__arrow {
+  color: var(--color-forest);
+}
+
+/* Controls */
+.btn {
+  min-height: 44px;
+  border-radius: 0;
+  padding: 11px 18px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.btn--primary {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-chalk);
+}
+
+.btn--primary:hover:not(:disabled) {
+  border-color: var(--color-accent-deep);
+  background: var(--color-accent-deep);
+}
+
+.btn--outline {
+  border-color: var(--color-rule-dark);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.btn--outline:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-deep);
+}
+
+.btn--quiet {
+  color: var(--color-muted);
+}
+
+.btn--quiet:hover:not(:disabled) {
+  color: var(--color-ink);
+  background: var(--color-accent-wash);
+}
+
+.btn--danger {
+  border-color: var(--color-ink);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.btn--light {
+  border-color: var(--color-chalk);
+  background: var(--color-chalk);
+  color: var(--color-forest);
+}
+
+.btn--light:hover:not(:disabled) {
+  border-color: var(--color-mint);
+  background: var(--color-mint);
+  color: var(--color-forest);
+}
+
+.btn--ghost-light {
+  border-color: rgba(245, 248, 241, 0.45);
+  background: transparent;
+  color: var(--color-chalk);
+}
+
+.btn--ghost-light:hover:not(:disabled) {
+  border-color: var(--color-chalk);
+  background: rgba(245, 248, 241, 0.08);
+  color: var(--color-chalk);
+}
+
+.btn--header {
+  min-height: 38px;
+  border: 1px solid var(--color-chalk);
+  background: var(--color-chalk);
+  color: var(--color-forest);
+  padding: 8px 14px;
+}
+
+.btn--header:hover {
+  border-color: var(--color-mint);
+  background: var(--color-mint);
+  color: var(--color-forest);
+}
+
+.btn--sm {
+  min-height: 36px;
+  padding: 8px 12px;
+  font-size: 9px;
+}
+
+.textlink {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration-color: var(--color-rule-dark);
+}
+
+.textlink:hover {
+  color: var(--color-accent-deep);
+}
+
+.field {
+  border-radius: 0;
+  border-color: var(--color-rule-dark);
+  background: var(--color-paper-white);
+  padding: 11px 12px;
+  font-size: 13px;
+}
+
+.field:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.field-label {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.field-hint {
+  color: var(--color-faint);
+}
+
+.field::placeholder {
+  color: var(--color-faint);
+}
+
+.check-row {
+  color: var(--color-ink-soft);
+}
+
+.checkbox {
+  accent-color: var(--color-accent);
+}
+
+.panel {
+  border-radius: 0;
+  background: var(--color-paper-white);
+}
+
+.panel--white {
+  background: var(--color-paper-white);
+}
+
+.notice {
+  border-left: 3px solid var(--color-rule-dark);
+  background: var(--color-paper-white);
+}
+
+.notice--accent {
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
+}
+
+.form-error {
+  border: 1px solid var(--color-ink);
+  border-left: 4px solid var(--color-mint);
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.form-error a {
+  color: var(--color-mint);
+}
+
+.status-pill {
+  min-height: 23px;
+  border-radius: 0;
+  padding: 3px 8px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.status-pill::before {
+  width: 4px;
+  height: 4px;
+}
+
+.status-pill--good {
+  border-color: var(--color-accent);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-deep);
+}
+
+.status-pill--good::before {
+  background: var(--color-accent);
+}
+
+.status-pill--warning {
+  border-color: var(--color-accent);
+  background: transparent;
+  color: var(--color-accent-deep);
+}
+
+.status-pill--danger {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.status-pill--danger::before {
+  background: var(--color-chalk);
+}
+
+.status-pill--muted {
+  border-color: var(--color-rule-dark);
+  color: var(--color-muted);
+}
+
+.demo-badge {
+  border-radius: 0;
+  border-color: var(--color-accent);
+  color: var(--color-accent-deep);
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+}
+
+/* Trust stamp — a rectangular passport mark, not a circular seal */
+.trust-seal {
+  display: flex;
+  width: 138px;
+  height: 78px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-accent);
+  border-radius: 0;
+  color: var(--color-accent);
+  transform: rotate(-2deg);
+  text-align: center;
+}
+
+.trust-seal::before {
+  inset: 4px;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  opacity: 0.45;
+}
+
+.trust-seal__inner {
+  width: auto;
+  gap: 2px;
+}
+
+.trust-seal__top {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 6px;
+  letter-spacing: 0.16em;
+}
+
+.trust-seal__main {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: 18px;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.trust-seal__year {
+  font-size: 6px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.trust-seal--ink {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.attest-stamp {
+  width: 192px;
+  height: 126px;
+  border-width: 2px;
+}
+
+.attest-stamp .trust-seal__main {
+  font-size: 34px;
+}
+
+.attest-stamp .trust-seal__top,
+.attest-stamp .trust-seal__year {
+  font-size: 8px;
+}
+
+.criteria-mark {
+  border-radius: 0;
+}
+
+.criteria-item--met .criteria-mark {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.criteria-item--met .criteria-mark::after {
+  border-color: var(--color-chalk);
+}
+
+/* Landing — passport cover, specimen sheet, registry ledger */
+.cover-hero {
+  background: var(--color-forest);
+  color: var(--color-chalk);
+  border-bottom: 1px solid rgba(245, 248, 241, 0.16);
+  padding-bottom: 96px;
+}
+
+.cover-hero__folio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(245, 248, 241, 0.18);
+  padding-block: 12px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-moss);
+}
+
+.cover-hero__grid {
+  display: grid;
+  gap: 52px;
+  padding-top: 56px;
+}
+
+@media (min-width: 980px) {
+  .cover-hero__grid {
+    grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
+    gap: 80px;
+    align-items: stretch;
+  }
+}
+
+.cover-hero__title {
+  max-width: 10.5ch;
+  margin: 22px 0 0;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(62px, 9.2vw, 132px);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+  color: var(--color-chalk);
+}
+
+.cover-hero__lede {
+  max-width: 580px;
+  margin: 32px 0 0;
+  font-size: clamp(19px, 2.25vw, 27px);
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--color-chalk);
+}
+
+.cover-hero__copy {
+  max-width: 510px;
+  margin: 17px 0 0;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(245, 248, 241, 0.64);
+}
+
+.cover-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 32px;
+}
+
+.cover-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  margin-top: 52px;
+  border-top: 1px solid rgba(245, 248, 241, 0.18);
+  padding-top: 12px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: rgba(245, 248, 241, 0.58);
+}
+
+.cover-index {
+  border-left: 1px solid rgba(245, 248, 241, 0.2);
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 979px) {
+  .cover-index {
+    border-left: 0;
+    border-top: 1px solid rgba(245, 248, 241, 0.2);
+    padding-left: 0;
+    padding-top: 22px;
+  }
+}
+
+.cover-index__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid rgba(245, 248, 241, 0.2);
+  padding-bottom: 10px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-moss);
+}
+
+.cover-index ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cover-index li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 12px;
+  border-bottom: 1px solid rgba(245, 248, 241, 0.13);
+  padding-block: 15px;
+}
+
+.cover-index__number {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  line-height: 1.8;
+  color: var(--color-moss);
+}
+
+.cover-index h2 {
+  margin: 0;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-chalk);
+}
+
+.cover-index p {
+  max-width: 280px;
+  margin: 4px 0 0;
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(245, 248, 241, 0.58);
+}
+
+.cover-stamp {
+  width: 158px;
+  margin: 34px 0 0 auto;
+  border: 1px solid rgba(245, 248, 241, 0.5);
+  padding: 13px 12px 11px;
+  text-align: center;
+  transform: rotate(-3deg);
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  color: var(--color-moss);
+}
+
+.cover-stamp strong {
+  display: block;
+  margin: 3px 0;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: none;
+  color: var(--color-chalk);
+}
+
+/* Specimen file below the cover */
+.specimen-file {
+  position: relative;
+  z-index: 2;
+  margin-top: -46px;
+  border: 1px solid var(--color-rule-dark);
+  border-top: 4px solid var(--color-accent);
+  background: var(--color-paper-white);
+}
+
+.specimen-file__tab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 18px;
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-forest);
+  color: var(--color-chalk);
+  padding: 10px 16px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.specimen-file__tab .demo-badge {
+  border-color: var(--color-moss);
+  color: var(--color-chalk);
+}
+
+.specimen-file__tab .demo-badge span:first-child {
+  background: var(--color-moss);
+}
+
+.specimen-file__grid {
+  display: grid;
+}
+
+@media (min-width: 880px) {
+  .specimen-file__grid {
+    grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  }
+}
+
+.specimen-file__media {
+  min-height: 260px;
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-accent-wash);
+}
+
+@media (min-width: 880px) {
+  .specimen-file__media {
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 0;
+  }
+}
+
+.specimen-file__media img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+}
+
+.specimen-file__fallback {
+  display: grid;
+  min-height: 340px;
+  place-items: center;
+  color: var(--color-accent);
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 48px;
+}
+
+.specimen-file__caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid var(--color-rule);
+  background: var(--color-paper-white);
+  padding: 8px 13px;
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--color-faint);
+}
+
+.specimen-file__body {
+  padding: 25px 20px 0;
+}
+
+@media (min-width: 700px) {
+  .specimen-file__body {
+    padding: 29px 32px 0;
+  }
+}
+
+.specimen-file__topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 13px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+.specimen-file__title {
+  margin: 20px 0 0;
+  font-size: clamp(31px, 4vw, 47px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.specimen-file__creator {
+  margin: 9px 0 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.specimen-file__creator span {
+  margin-left: 8px;
+  color: var(--color-faint);
+  font-weight: 400;
+}
+
+.specimen-file__summary {
+  max-width: 620px;
+  margin: 18px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.specimen-file__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--color-rule);
+  border-left: 1px solid var(--color-rule);
+  margin: 24px 0 0;
+}
+
+@media (min-width: 640px) {
+  .specimen-file__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.specimen-file__facts > div {
+  border-right: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  padding: 10px;
+}
+
+.specimen-file__facts dt {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+.specimen-file__facts dd {
+  margin: 4px 0 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+}
+
+.specimen-file__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--color-rule);
+  margin-top: 21px;
+  padding-block: 13px;
+}
+
+.specimen-file__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.specimen-file__status > span {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+}
+
+.specimen-file__note {
+  border-top: 1px solid var(--color-rule);
+  margin: 0 -20px;
+  padding: 8px 20px;
+  font-size: 9px;
+  line-height: 1.5;
+  color: var(--color-faint);
+}
+
+@media (min-width: 700px) {
+  .specimen-file__note {
+    margin-inline: -32px;
+    padding-inline: 32px;
+  }
+}
+
+/* Four-rule index */
+.registry-rules {
+  display: grid;
+  margin-top: 27px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-paper-white);
+}
+
+@media (min-width: 720px) {
+  .registry-rules {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.registry-rule {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 13px 15px;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+@media (min-width: 720px) {
+  .registry-rule {
+    border-bottom: 0;
+    border-left: 1px solid var(--color-rule);
+  }
+
+  .registry-rule:first-child {
+    border-left: 0;
+  }
+}
+
+.registry-rule span {
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  color: var(--color-accent);
+}
+
+.registry-rule strong {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+/* Method sheet */
+.method-section {
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-paper-white);
+  margin-top: 72px;
+  padding-block: 76px;
+}
+
+.method-section__grid {
+  display: grid;
+  gap: 46px;
+}
+
+@media (min-width: 940px) {
+  .method-section__grid {
+    grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+    gap: 76px;
+  }
+}
+
+.method-section__intro h2 {
+  max-width: 410px;
+  margin: 16px 0 0;
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 0.95;
+}
+
+.method-section__intro h2 em,
+.scope-section h2 em,
+.closing-cover h2 em {
+  font-style: normal;
+  color: var(--color-accent);
+}
+
+.method-section__intro p:last-child {
+  max-width: 340px;
+  margin: 20px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.method-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-forest);
+}
+
+.method-list__item {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 15px;
+  border-bottom: 1px solid var(--color-rule);
+  padding-block: 24px;
+}
+
+@media (min-width: 760px) {
+  .method-list__item {
+    grid-template-columns: 40px minmax(0, 1fr) 150px;
+    gap: 26px;
+    padding-block: 28px;
+  }
+}
+
+.method-list__number {
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  color: var(--color-accent);
+  padding-top: 6px;
+}
+
+.method-list__item h3 {
+  margin: 0;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+}
+
+.method-list__item p {
+  max-width: 560px;
+  margin: 9px 0 0;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.method-list__aside {
+  display: none;
+  padding-top: 7px;
+  text-align: right;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+@media (min-width: 760px) {
+  .method-list__aside {
+    display: block;
+  }
+}
+
+/* Scope ledger */
+.scope-section {
+  background: var(--color-accent-wash);
+  border-bottom: 1px solid var(--color-rule);
+  padding-block: 76px;
+}
+
+.scope-section__grid {
+  display: grid;
+  gap: 42px;
+}
+
+@media (min-width: 960px) {
+  .scope-section__grid {
+    grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.22fr);
+    gap: 68px;
+    align-items: start;
+  }
+}
+
+.scope-section__intro h2 {
+  max-width: 490px;
+  margin: 16px 0 0;
+  font-size: clamp(42px, 5vw, 66px);
+  line-height: 0.94;
+}
+
+.scope-section__intro > p:last-of-type {
+  max-width: 410px;
+  margin: 20px 0 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+}
+
+.scope-stamp {
+  width: 174px;
+  margin-top: 34px;
+  border: 1px solid var(--color-accent);
+  padding: 11px;
+  text-align: center;
+  transform: rotate(-2deg);
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+.scope-stamp strong {
+  display: block;
+  margin: 3px 0;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.scope-ledger {
+  display: grid;
+  border: 1px solid var(--color-rule-dark);
+  background: var(--color-paper-white);
+}
+
+@media (min-width: 680px) {
+  .scope-ledger {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.scope-ledger__column {
+  padding: 26px 21px 22px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.scope-ledger__column:first-child {
+  border-top: 0;
+}
+
+@media (min-width: 680px) {
+  .scope-ledger__column {
+    border-top: 0;
+  }
+
+  .scope-ledger__column + .scope-ledger__column {
+    border-left: 1px solid var(--color-rule);
+  }
+}
+
+.scope-ledger__column .eyebrow {
+  color: var(--color-accent);
+}
+
+.scope-ledger ul {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-rule);
+}
+
+.scope-ledger li {
+  border-bottom: 1px solid var(--color-rule);
+  padding: 11px 0 11px 15px;
+  position: relative;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
+}
+
+.scope-ledger li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 6px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* Audience row ledger */
+.audience-section {
+  padding-block: 78px;
+}
+
+.audience-section__grid {
+  display: grid;
+  gap: 36px;
+}
+
+@media (min-width: 900px) {
+  .audience-section__grid {
+    grid-template-columns: minmax(220px, 0.58fr) minmax(0, 1.42fr);
+    gap: 78px;
+  }
+}
+
+.audience-section h2 {
+  max-width: 300px;
+  margin: 16px 0 0;
+  font-size: clamp(40px, 4.6vw, 58px);
+  line-height: 0.95;
+}
+
+.audience-list {
+  border-top: 2px solid var(--color-forest);
+}
+
+.audience-row {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 4px 14px;
+  border-bottom: 1px solid var(--color-rule);
+  padding-block: 18px;
+}
+
+@media (min-width: 700px) {
+  .audience-row {
+    grid-template-columns: 30px minmax(150px, 0.6fr) minmax(0, 1.4fr);
+    gap: 24px;
+    align-items: baseline;
+  }
+}
+
+.audience-row > span {
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  color: var(--color-accent);
+}
+
+.audience-row strong {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+
+.audience-row p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+@media (max-width: 699px) {
+  .audience-row p {
+    grid-column: 2;
+    margin-top: 3px;
+  }
+}
+
+/* Closing cover */
+.closing-cover {
+  background: var(--color-forest);
+  color: var(--color-chalk);
+  margin-top: 0;
+  padding-block: 76px;
+}
+
+.closing-cover__inner {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 920px) {
+  .closing-cover__inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+    align-items: end;
+    gap: 70px;
+  }
+}
+
+.closing-cover h2 {
+  max-width: 760px;
+  margin: 16px 0 0;
+  font-size: clamp(47px, 6.5vw, 86px);
+  line-height: 0.9;
+  color: var(--color-chalk);
+}
+
+.closing-cover h2 em {
+  color: var(--color-moss);
+}
+
+.closing-cover__actions .btn {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.closing-cover__actions p {
+  max-width: 320px;
+  margin: 10px 0 0;
+  font-size: 10px;
+  line-height: 1.6;
+  color: rgba(245, 248, 241, 0.52);
+}
+
+/* Public verification — a registry file on chalk */
+.public-record {
+  margin-top: 28px;
+  padding: 0;
+  border: 1px solid var(--color-rule-dark);
+  background: var(--color-paper-white);
+}
+
+@media (max-width: 767px) {
+  .public-record {
+    width: 100%;
+    margin-top: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+}
+
+.public-record__top {
+  border-bottom: 1px solid rgba(245, 248, 241, 0.18);
+  background: var(--color-forest);
+  color: var(--color-chalk);
+  padding: 11px 24px;
+}
+
+.public-record__top .eyebrow {
+  color: var(--color-moss);
+}
+
+.public-record__serial,
+.public-record__visibility {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: rgba(245, 248, 241, 0.55);
+}
+
+.public-record__top .status-pill {
+  border-color: rgba(245, 248, 241, 0.5);
+  background: transparent;
+  color: var(--color-chalk);
+}
+
+.public-record__top .status-pill::before {
+  background: var(--color-moss);
+}
+
+.public-record__top .status-pill--danger {
+  border-color: var(--color-mint);
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.public-record__top .demo-badge {
+  border-color: rgba(245, 248, 241, 0.45);
+  color: var(--color-chalk);
+}
+
+.public-record__top .demo-badge span:first-child {
+  background: var(--color-moss);
+}
+
+.public-record .demo-banner {
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-accent-wash);
+  padding: 10px 24px;
+  color: var(--color-accent-deep);
+}
+
+.public-record__header {
+  display: grid;
+  gap: 34px;
+  border-bottom: 1px solid var(--color-rule);
+  padding: 46px 24px 34px;
+}
+
+@media (min-width: 900px) {
+  .public-record__header {
+    grid-template-columns: minmax(0, 1fr) 160px;
+    gap: 54px;
+    padding: 62px 36px 42px;
+  }
+}
+
+.public-record .public-record__title {
+  max-width: 880px;
+  margin: 16px 0 0;
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+}
+
+.public-record__summary {
+  max-width: 740px;
+  margin: 24px 0 0;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+
+.public-record__byline {
+  gap: 12px;
+  border-top: 1px solid var(--color-rule);
+  margin-top: 28px;
+  padding-top: 15px;
+}
+
+.public-record__byline .avatar {
+  border-radius: 0;
+}
+
+.public-record__seal {
+  align-self: start;
+}
+
+.public-record__seal .trust-seal {
+  width: 154px;
+  height: 88px;
+}
+
+.public-record__seal > p {
+  text-align: left;
+}
+
+.seal-suspended {
+  width: 154px;
+  height: 88px;
+  border-radius: 0;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-chalk);
+  transform: rotate(-2deg);
+}
+
+.seal-suspended .eyebrow {
+  color: var(--color-mint);
+}
+
+.seal-suspended strong {
+  max-width: 110px;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 15px;
+  line-height: 1.05;
+  color: var(--color-chalk);
+}
+
+.status-banner {
+  gap: 18px;
+  border: 1px solid var(--color-rule);
+  border-left: 4px solid var(--color-rule-dark);
+  background: var(--color-paper-raised);
+  margin: 22px 24px;
+  padding: 18px 20px;
+}
+
+@media (min-width: 800px) {
+  .status-banner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+}
+
+.status-banner .eyebrow {
+  color: var(--color-accent);
+}
+
+.status-banner__title {
+  margin: 3px 0 5px;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(22px, 2.7vw, 30px);
+  line-height: 1;
+}
+
+.status-banner__copy {
+  color: var(--color-muted);
+}
+
+.status-banner--good {
+  border-color: var(--color-rule);
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
+}
+
+.status-banner--good .status-banner__title {
+  color: var(--color-accent-deep);
+}
+
+.status-banner--pending {
+  border-left-color: var(--color-accent);
+}
+
+.status-banner--warning {
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-wash);
+}
+
+.status-banner--danger {
+  border-color: var(--color-ink);
+  border-left: 4px solid var(--color-mint);
+  background: var(--color-ink);
+  color: var(--color-chalk);
+}
+
+.status-banner--danger .eyebrow {
+  color: var(--color-mint);
+}
+
+.status-banner--danger .status-banner__title,
+.status-banner--danger .status-banner__copy {
+  color: var(--color-chalk);
+}
+
+.status-banner--danger .btn--outline {
+  border-color: var(--color-chalk);
+  color: var(--color-chalk);
+}
+
+.status-banner--danger .btn--outline:hover {
+  background: var(--color-chalk);
+  color: var(--color-ink);
+}
+
+/* Trust criteria band */
+.trust-register {
+  display: grid;
+  gap: 22px;
+  border-bottom: 1px solid var(--color-rule);
+  background: var(--color-paper-white);
+  padding: 24px;
+}
+
+@media (min-width: 1000px) {
+  .trust-register {
+    grid-template-columns: 255px minmax(0, 1fr);
+    gap: 38px;
+    padding: 28px 36px;
+    align-items: start;
+  }
+}
+
+.trust-register__summary {
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 18px;
+}
+
+@media (min-width: 1000px) {
+  .trust-register__summary {
+    border-right: 1px solid var(--color-rule);
+    border-bottom: 0;
+    padding-right: 34px;
+    padding-bottom: 0;
+  }
+}
+
+.trust-register__summary h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 38px;
+  line-height: 0.95;
+  color: var(--color-accent-deep);
+}
+
+.trust-register__summary > p:last-child {
+  margin: 9px 0 0;
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.trust-register .criteria-list {
+  display: grid;
+  gap: 0 26px;
+}
+
+@media (min-width: 720px) {
+  .trust-register .criteria-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.trust-register .criteria-item {
+  border-top: 1px solid var(--color-rule);
+  padding-block: 9px;
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 9px;
+}
+
+.trust-register .criteria-item:nth-child(-n + 2) {
+  border-top: 0;
+}
+
+.trust-register .criteria-title {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.trust-register .criteria-detail {
+  margin-top: 2px;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.trust-register .criteria-mark {
+  width: 14px;
+  height: 14px;
+  border-radius: 0;
+  margin-top: 0;
+}
+
+.trust-register .criteria-item--met .criteria-mark::after {
+  width: 6px;
+  height: 3px;
+}
+
+/* Verification body */
+.verify-grid {
+  display: grid;
+  gap: 40px;
+  border-top: 0;
+  padding: 32px 24px 24px;
+}
+
+@media (min-width: 1040px) {
+  .verify-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 54px;
+    padding: 42px 36px 32px;
+  }
+}
+
+.verify-main {
+  min-width: 0;
+}
+
+.record-figure {
+  margin-bottom: 40px;
+  border: 1px solid var(--color-rule-dark);
+}
+
+.record-figure img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.record-figure figcaption {
+  background: var(--color-paper-raised);
+  border-top: 1px solid var(--color-rule);
+  color: var(--color-faint);
+  font-size: 8px;
+}
+
+.record-section {
+  border-top: 1px solid var(--color-rule);
+  margin-top: 38px;
+  padding-top: 22px;
+}
+
+.record-section:first-of-type {
+  margin-top: 0;
+}
+
+.record-section__head {
+  margin-bottom: 20px;
+}
+
+.record-section__head .eyebrow {
+  color: var(--color-accent);
+}
+
+.record-section__head h2 {
+  margin: 7px 0 0;
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(29px, 3.6vw, 40px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.claim {
+  display: block;
+  border-top: 1px solid var(--color-rule);
+  padding: 22px 0;
+}
+
+.claim:first-child {
+  padding-top: 0;
+}
+
+.claim__head {
+  gap: 14px;
+}
+
+.claim__number {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  flex: 0 0 auto;
+  margin-top: 2px;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-deep);
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+}
+
+.claim__text {
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: clamp(20px, 2.2vw, 25px);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.claim__evidence {
+  margin-left: 0;
+  border-left: 2px solid var(--color-accent);
+  background: var(--color-paper-raised);
+  padding: 8px 10px;
+  color: var(--color-muted);
+}
+
+.witness-note {
+  margin-left: 0;
+  color: var(--color-faint);
+}
+
+.witness-note strong {
+  color: var(--color-ink-soft);
+}
+
+.attestation-witness {
+  border-top-color: var(--color-rule);
+  color: var(--color-faint);
+}
+
+.participants li {
+  border-color: var(--color-rule);
+}
+
+.participants li span:last-child {
+  color: var(--color-faint);
+}
+
+.media-evidence {
+  border-top-color: var(--color-rule);
+}
+
+.media-evidence li {
+  border-bottom-color: var(--color-rule);
+}
+
+.media-evidence__top .eyebrow {
+  color: var(--color-accent);
+}
+
+/* Ledger timeline */
+.evidence-ledger {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-forest);
+}
+
+.evidence-ledger__row {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  border-bottom: 1px solid var(--color-rule);
+  padding-block: 11px;
+}
+
+.evidence-ledger__sequence {
+  padding-top: 2px;
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  color: var(--color-accent);
+}
+
+.evidence-ledger__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 18px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+}
+
+.evidence-ledger__heading time {
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  font-weight: 400;
+  color: var(--color-faint);
+  letter-spacing: -0.02em;
+}
+
+.evidence-ledger__copy {
+  max-width: 560px;
+  margin: 3px 0 0;
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--color-faint);
+}
+
+.evidence-ledger__hash {
+  margin: 5px 0 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  line-height: 1.5;
+  word-break: break-all;
+  color: var(--color-faint);
+}
+
+.evidence-ledger__hash span {
+  display: inline-block;
+  margin-right: 6px;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+/* Provenance rail */
+.verify-aside {
+  gap: 0;
+  border-top: 3px solid var(--color-forest);
+}
+
+@media (min-width: 1040px) {
+  .verify-aside {
+    position: sticky;
+    top: 94px;
+  }
+}
+
+.verify-aside .provenance-box {
+  border: 0;
+  border-bottom: 1px solid var(--color-rule);
+  background: transparent;
+  padding: 15px 0 18px;
+}
+
+.verify-aside .provenance-box__head {
+  border-bottom: 0;
+  margin-bottom: 9px;
+  padding-bottom: 0;
+}
+
+.verify-aside .provenance-box__head .eyebrow {
+  color: var(--color-accent);
+}
+
+.verify-aside .provenance-box:first-child {
+  padding-top: 15px;
+}
+
+.verify-aside .integrity-checks > div {
+  border-top-color: var(--color-rule);
+}
+
+.verify-aside .embed-preview {
+  border-color: var(--color-rule);
+  background: var(--color-paper-white);
+}
+
+.verify-aside .qr-tile {
+  border-color: var(--color-ink);
+  background: var(--color-paper-white);
+}
+
+.provenance-note {
+  border-top: 0;
+  color: var(--color-faint);
+}
+
+.public-record__footer {
+  border-top: 1px solid var(--color-rule);
+  margin: 0 24px;
+  padding-block: 15px 24px;
+  color: var(--color-faint);
+}
+
+@media (min-width: 900px) {
+  .public-record__footer {
+    margin-inline: 36px;
+  }
+}
+
+.public-record__footer + * {
+  margin-top: 0;
+}
+
+/* Dashboard and working surfaces */
+.dash-head,
+.page-head {
+  padding-block: 42px 26px;
+}
+
+.dash-title {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(44px, 5.6vw, 74px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.dash-intro,
+.page-intro {
+  color: var(--color-muted);
+}
+
+.stat-row {
+  border-top: 1px solid var(--color-rule-dark);
+  border-bottom: 1px solid var(--color-rule-dark);
+  background: var(--color-paper-white);
+}
+
+.stat {
+  border-left-color: var(--color-rule);
+}
+
+.stat__number {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: 38px;
+  letter-spacing: -0.05em;
+}
+
+.stat__label {
+  color: var(--color-faint);
+}
+
+.ledger {
+  border-top: 2px solid var(--color-forest);
+  background: var(--color-paper-white);
+  padding-inline: 17px;
+}
+
+.ledger__header {
+  border-bottom-color: var(--color-rule-dark);
+}
+
+.ledger__row {
+  border-bottom-color: var(--color-rule);
+}
+
+.ledger__title {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+}
+
+.ledger__title:hover {
+  color: var(--color-accent-deep);
+}
+
+.ledger__meta {
+  color: var(--color-faint);
+}
+
+.empty-state {
+  border: 1px solid var(--color-rule-dark);
+  border-top: 4px solid var(--color-accent);
+  background: var(--color-paper-white);
+}
+
+.page-head {
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.page-title {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(42px, 5.2vw, 68px);
+  line-height: 0.94;
+}
+
+.back-link {
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.back-link:hover {
+  color: var(--color-accent-deep);
+}
+
+.panel {
+  border-top: 3px solid var(--color-accent);
+}
+
+.panel--forest {
+  border-color: var(--color-forest);
+  border-top: 4px solid var(--color-moss);
+  background: var(--color-forest);
+  color: var(--color-chalk);
+}
+
+.panel--forest .panel__header {
+  border-bottom-color: rgba(245, 248, 241, 0.16);
+}
+
+.panel--forest .eyebrow {
+  color: var(--color-moss);
+}
+
+.panel--forest .panel__body {
+  color: rgba(245, 248, 241, 0.68);
+}
+
+.panel--forest .panel__body .eyebrow {
+  color: var(--color-moss);
+}
+
+.panel--forest .border-t,
+.panel--forest .border-rule {
+  border-color: rgba(245, 248, 241, 0.16) !important;
+}
+
+.panel--forest .text-muted,
+.panel--forest .text-faint {
+  color: rgba(245, 248, 241, 0.58);
+}
+
+.panel--forest .font-display {
+  color: var(--color-chalk);
+}
+
+.panel--forest h2,
+.panel--forest h3 {
+  color: var(--color-chalk);
+}
+
+.owner-grid {
+  gap: 38px;
+}
+
+.owner-aside > .provenance-box {
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-rule);
+  border-top: 3px solid var(--color-accent);
+}
+
+.owner-aside .provenance-box__head {
+  border-bottom-color: var(--color-rule);
+}
+
+.owner-grid .claim__number {
+  background: var(--color-accent-wash);
+  color: var(--color-accent-deep);
+}
+
+.owner-grid .claim__text {
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+.owner-grid .claim__evidence {
+  border-left: 2px solid var(--color-accent);
+  background: var(--color-paper-raised);
+  padding: 8px 10px;
+}
+
+.owner-grid .provenance-box .inline-dl > div {
+  border-top-color: var(--color-rule);
+}
+
+.form-section {
+  border: 1px solid var(--color-rule);
+  border-top: 3px solid var(--color-accent);
+  background: var(--color-paper-white);
+  padding: 23px 19px;
+  margin-top: 20px;
+}
+
+@media (min-width: 700px) {
+  .form-section {
+    padding: 28px 28px 30px;
+  }
+}
+
+.form-section:first-child {
+  margin-top: 0;
+  border-top: 3px solid var(--color-accent);
+  padding-top: 28px;
+}
+
+.form-section__head {
+  margin-bottom: 20px;
+}
+
+.form-section__title {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(27px, 3vw, 36px);
+}
+
+.form-section__intro {
+  color: var(--color-muted);
+}
+
+.section-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 0;
+  border-color: var(--color-rule-dark);
+  background: var(--color-accent-wash);
+  color: var(--color-accent-deep);
+}
+
+.image-drop {
+  border-color: var(--color-rule-dark);
+  background: var(--color-paper-raised);
+}
+
+.image-drop:hover,
+.image-drop:focus-within {
+  border-color: var(--color-accent);
+  background: var(--color-paper-white);
+}
+
+.preview-tile {
+  border-color: var(--color-rule-dark);
+}
+
+.preview-tile__bar {
+  color: var(--color-muted);
+}
+
+.settings-grid {
+  align-items: start;
+}
+
+.destructive-zone {
+  border-color: var(--color-ink);
+  background: var(--color-paper-white);
+}
+
+.destructive-zone .panel__header {
+  border-bottom-color: var(--color-rule);
+  background: var(--color-ink);
+}
+
+.destructive-zone .panel__header h2 {
+  color: var(--color-chalk);
+}
+
+.destructive-zone .panel__header .eyebrow {
+  color: var(--color-mint);
+}
+
+.admin-row {
+  border-top-color: var(--color-rule);
+}
+
+.admin-row:nth-child(even) {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.audit-row {
+  border-top-color: var(--color-rule);
+}
+
+.audit-action {
+  color: var(--color-accent);
+}
+
+.form-error .eyebrow {
+  color: var(--color-mint);
+}
+
+/* Forms: labels and small structure */
+.field-grid {
+  gap: 16px;
+}
+
+.field-label {
+  color: var(--color-muted);
+}
+
+.helper-bar,
+.credential-card {
+  border-color: var(--color-rule);
+  background: var(--color-paper-white);
+}
+
+.credential-card__line {
+  border-top-color: var(--color-rule);
+  color: var(--color-muted);
+}
+
+/* Auth */
+.auth-shell {
+  background: var(--color-paper);
+}
+
+.auth-mobile-brand {
+  background: var(--color-forest);
+}
+
+.auth-mobile-brand .brand__name,
+.auth-mobile-brand .brand__sub {
+  color: var(--color-chalk);
+}
+
+.auth-mobile-brand .brand__sub {
+  color: var(--color-moss);
+}
+
+.auth-mobile-brand .brand__seal {
+  color: var(--color-chalk);
+}
+
+.auth-brand {
+  background: var(--color-forest);
+  color: var(--color-chalk);
+}
+
+.auth-brand .brand__seal {
+  color: var(--color-chalk);
+  border-color: rgba(245, 248, 241, 0.6);
+}
+
+.auth-brand .brand__sub {
+  color: var(--color-moss);
+}
+
+.auth-brand__quote p {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(34px, 4.5vw, 56px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  color: var(--color-chalk);
+}
+
+.auth-brand__foot {
+  color: rgba(245, 248, 241, 0.56);
+}
+
+.auth-brand__stamp {
+  right: -70px;
+  bottom: -88px;
+  width: 260px;
+  height: 260px;
+  border-radius: 0;
+  border-color: rgba(219, 233, 224, 0.2);
+  transform: rotate(-6deg);
+}
+
+.auth-brand__stamp::before {
+  inset: 8px;
+  border-radius: 0;
+  border-color: rgba(219, 233, 224, 0.14);
+}
+
+.auth-main {
+  background: var(--color-paper);
+}
+
+.auth-card h1 {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(44px, 5.4vw, 62px);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+.auth-card > p:not(.eyebrow) {
+  color: var(--color-muted);
+}
+
+.credential-card .eyebrow {
+  color: var(--color-accent);
+}
+
+/* Attestation desk */
+.attest-main {
+  padding-block: 38px 72px;
+}
+
+.attest-card {
+  border: 1px solid var(--color-rule-dark);
+  border-top: 4px solid var(--color-accent);
+  background: var(--color-paper-white);
+  padding: clamp(22px, 4vw, 46px);
+}
+
+.attest-card h1,
+.attest-success h2 {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+}
+
+.attest-context {
+  border-color: var(--color-rule);
+}
+
+.claim-pull {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 20px;
+}
+
+.claim-pull__text {
+  font-family: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  font-size: clamp(28px, 4vw, 46px);
+}
+
+.attest-success {
+  border: 1px solid var(--color-rule);
+  background: var(--color-accent-wash);
+}
+
+.attest-card .inline-dl > div {
+  border-top-color: var(--color-rule);
+}
+
+.attest-card .inline-dl dt {
+  color: var(--color-faint);
+}
+
+.attest-card .inline-dl dd {
+  color: var(--color-ink-soft);
+}
+
+/* 404 / error */
+.not-found,
+.error-page {
+  background: var(--color-paper);
+}
+
+/* Focus and small details */
+.hash {
+  color: var(--color-muted);
+}
+
+.hash--short {
+  color: var(--color-muted);
+}
+
+.pill {
+  border-radius: 0;
+  font-family: var(--font-manrope), "Avenir Next", Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.site-header__micro-alt {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .site-header__micro-alt {
+    display: inline;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header__micro {
+    font-size: 7px;
+    letter-spacing: 0.1em;
+  }
+
+  .site-header__inner {
+    min-height: 64px;
+  }
+
+  .site-header .brand__name {
+    font-size: 16px;
+  }
+
+  .public-record__header {
+    padding-top: 34px;
+  }
+
+  .public-record .public-record__title {
+    font-size: clamp(42px, 12.5vw, 58px);
+  }
+
+  .trust-register {
+    padding: 20px;
+  }
+
+  .verify-grid {
+    padding: 28px 20px 22px;
+  }
+
+  .public-record__top {
+    padding-inline: 20px;
+  }
+}
+
+
+.avatar {
+  border-radius: 0;
+}
+
+.status-banner {
+  margin: 0 0 22px;
+}
+
+.public-record .status-banner {
+  margin: 22px 24px;
+}
+
+.site-footer .link {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+  padding-block: 3px;
 }

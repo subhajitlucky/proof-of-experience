@@ -130,11 +130,8 @@ export default async function VerifyPage({ params }: PageProps) {
     <article className="public-record wrap">
       <div className="public-record__top">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="eyebrow">Public verification</span>
-          <span className="text-[10px] text-faint">·</span>
-          <span className="text-[10px] uppercase tracking-[0.12em] text-faint">
-            Record {document.record.slug}
-          </span>
+          <span className="eyebrow">Public verification copy</span>
+          <span className="public-record__serial">Record {document.record.slug}</span>
           {document.record.isDemo ? <DemoBadge /> : null}
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -142,7 +139,7 @@ export default async function VerifyPage({ params }: PageProps) {
             status={document.record.status}
             altered={document.integrity.altered}
           />
-          <span className="text-[10px] uppercase tracking-[0.1em] text-faint">
+          <span className="public-record__visibility">
             {document.record.visibility}
           </span>
         </div>
@@ -217,6 +214,22 @@ export default async function VerifyPage({ params }: PageProps) {
           Read the evidence
           <span aria-hidden="true">↓</span>
         </Link>
+      </section>
+
+      <section className="trust-register" aria-labelledby="trust-level-heading">
+        <div className="trust-register__summary">
+          <p className="eyebrow">Trust level / criteria shown in full</p>
+          <h2 id="trust-level-heading">{document.trust.label}</h2>
+          <p>
+            {document.trust.witnessCount} independent witness
+            {document.trust.witnessCount === 1 ? "" : "es"} ·{" "}
+            {document.claims.length} claim
+            {document.claims.length === 1 ? "" : "s"} ·{" "}
+            {document.media.length} file
+            {document.media.length === 1 ? "" : "s"} on record.
+          </p>
+        </div>
+        <TrustCriteria trust={document.trust} />
       </section>
 
       <div className="verify-grid">
@@ -394,22 +407,7 @@ export default async function VerifyPage({ params }: PageProps) {
           </section>
         </div>
 
-        <aside className="verify-aside" aria-label="Record trust and provenance">
-          <section className="provenance-box">
-            <div className="provenance-box__head">
-              <p className="eyebrow">Trust level</p>
-              <span className="text-[10px] text-faint">No hidden score</span>
-            </div>
-            <div className="flex items-center gap-4 border-b border-rule pb-5">
-              <span className="font-display text-[27px] leading-none">
-                {document.trust.label}
-              </span>
-            </div>
-            <div className="pt-2">
-              <TrustCriteria trust={document.trust} />
-            </div>
-          </section>
-
+        <aside className="verify-aside" aria-label="Record provenance and actions">
           <section className="provenance-box">
             <div className="provenance-box__head">
               <p className="eyebrow">Record integrity</p>

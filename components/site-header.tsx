@@ -7,24 +7,30 @@ export async function SiteHeader() {
 
   return (
     <header className="site-header">
+      <div className="site-header__micro">
+        <div className="wrap flex items-center justify-between gap-6">
+          <span>Public evidence registry · access copy</span>
+          <span className="site-header__micro-alt">Evidence / attestation / integrity</span>
+        </div>
+      </div>
       <div className="site-header__inner wrap">
         <Brand />
-        <nav aria-label="Primary" className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2">
+        <nav aria-label="Primary" className="site-nav">
           <Link href="/#how-it-works" className="nav-link site-header__optional site-header__optional--md">
-            How it works
+            Method
           </Link>
           <Link href="/#scope" className="nav-link site-header__optional site-header__optional--lg">
-            What it proves
+            Scope
           </Link>
           <Link href="/verify/demo-kyoto-raku" className="nav-link site-header__optional site-header__optional--sm">
-            Demo record
+            Specimen
           </Link>
           {user ? (
             <>
               <Link href="/dashboard" className="nav-link">
-                Dashboard
+                Records
               </Link>
-              <Link href="/dashboard/new" className="btn btn--primary btn--sm site-header__cta">
+              <Link href="/dashboard/new" className="btn btn--header site-header__cta">
                 New record
                 <span className="btn__arrow" aria-hidden="true">
                   →
@@ -36,8 +42,8 @@ export async function SiteHeader() {
               <Link href="/login" className="nav-link">
                 Sign in
               </Link>
-              <Link href="/register" className="btn btn--primary btn--sm site-header__cta">
-                Create a record
+              <Link href="/register" className="btn btn--header site-header__cta">
+                Open a record
                 <span className="btn__arrow" aria-hidden="true">
                   →
                 </span>

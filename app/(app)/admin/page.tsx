@@ -92,7 +92,7 @@ export default async function AdminPage() {
                     {record.isDemo ? <DemoBadge /> : null}
                   </div>
                   <Link
-                    className="mt-2 inline-block font-display text-[24px] leading-tight hover:text-vermilion-dark"
+                    className="mt-2 inline-block font-display text-[24px] leading-tight hover:text-accent-deep"
                     href={`/verify/${record.slug}`}
                   >
                     {record.title}
@@ -154,7 +154,7 @@ export default async function AdminPage() {
                     <span className="pill">{trustLabel(record.trustLevel)}</span>
                   </div>
                   <Link
-                    className="mt-2 inline-block font-display text-[24px] leading-tight hover:text-vermilion-dark"
+                    className="mt-2 inline-block font-display text-[24px] leading-tight hover:text-accent-deep"
                     href={`/verify/${record.slug}`}
                   >
                     {record.title}

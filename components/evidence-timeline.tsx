@@ -8,6 +8,7 @@ import { formatDateTime } from "@/lib/format";
 export interface TimelineEvent {
   type: EvidenceType | string;
   occurredAt: string;
+  sequence?: number;
   eventHash?: string | null;
   previousHash?: string | null;
 }
@@ -30,24 +31,33 @@ export function EvidenceTimeline({
   }
 
   return (
-    <ol className="timeline">
+    <ol className="evidence-ledger">
       {ordered.map((event, index) => {
         const type = event.type as EvidenceType;
         const label = EVIDENCE_LABELS[type] ?? event.type;
         const description = EVIDENCE_DESCRIPTIONS[type];
         return (
-          <li className="timeline__item" key={`${event.occurredAt}-${index}`}>
-            <span className="timeline__dot" aria-hidden="true" />
-            <p className="timeline__heading">
-              <span>{label}</span>
-              <time className="timeline__date" dateTime={event.occurredAt}>
-                {formatDateTime(event.occurredAt)}
-              </time>
-            </p>
-            {description ? <p className="timeline__copy">{description}</p> : null}
-            {showHashes && event.eventHash ? (
-              <p className="hash mt-1">chain {event.eventHash.slice(0, 16)}…</p>
-            ) : null}
+          <li className="evidence-ledger__row" key={`${event.occurredAt}-${index}`}>
+            <span className="evidence-ledger__sequence">
+              {String(event.sequence ?? ordered.length - index).padStart(2, "0")}
+            </span>
+            <div className="evidence-ledger__content">
+              <div className="evidence-ledger__heading">
+                <span>{label}</span>
+                <time dateTime={event.occurredAt}>
+                  {formatDateTime(event.occurredAt)}
+                </time>
+              </div>
+              {description ? (
+                <p className="evidence-ledger__copy">{description}</p>
+              ) : null}
+              {showHashes && event.eventHash ? (
+                <p className="evidence-ledger__hash">
+                  <span>Event hash</span>
+                  {event.eventHash}
+                </p>
+              ) : null}
+            </div>
           </li>
         );
       })}

@@ -143,7 +143,7 @@ export function InviteWitnessForm({
       </form>
 
       {result ? (
-        <div className="mt-5 border border-vermilion bg-vermilion-wash p-3">
+        <div className="mt-5 border border-accent bg-accent-wash p-3">
           <p className="eyebrow eyebrow--accent">Invitation link ready</p>
           <p className="mt-2 text-[12px] leading-5 text-ink-soft">
             Send this link privately to {result.witness.name}. It works once, for the
@@ -166,7 +166,7 @@ export function InviteWitnessForm({
             />
             <CopyButton value={result.attestationUrl} label="Copy link" copiedLabel="Copied" />
           </div>
-          <p className="mt-2 text-[10px] leading-4 text-vermilion-dark">
+          <p className="mt-2 text-[10px] leading-4 text-accent-deep">
             This is a bearer link. Do not post it publicly.
           </p>
         </div>

@@ -153,7 +153,7 @@ export default async function DashboardPage() {
                     </Link>
                     {publiclyViewable ? (
                       <Link
-                        className="text-[10px] text-faint underline decoration-rule underline-offset-4 hover:text-vermilion"
+                        className="text-[10px] text-faint underline decoration-rule underline-offset-4 hover:text-accent"
                         href={`/verify/${record.slug}`}
                       >
                         Public page

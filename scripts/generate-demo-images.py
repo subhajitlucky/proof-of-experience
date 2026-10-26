@@ -12,15 +12,15 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 OUT = Path(__file__).resolve().parent.parent / "prisma" / "seed-assets"
 OUT.mkdir(parents=True, exist_ok=True)
 
-IVORY = "#f3ecdf"
-PAPER = "#f8f3e8"
-INK = "#211e1a"
-SLATE = "#4b4640"
-MUTED = "#7c7264"
-VERMILION = "#a63d2f"
-CLAY = "#c8b49a"
-SAND = "#d9cbb6"
-CREAM = "#e8dcc8"
+IVORY = "#e7eee7"
+PAPER = "#f1f5ef"
+INK = "#122219"
+SLATE = "#3a4b40"
+MUTED = "#62756a"
+ACCENT = "#0d5a43"
+CLAY = "#c8c4b2"
+SAND = "#d3d8cb"
+CREAM = "#e2e9e1"
 
 SERIF = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
 SERIF_BOLD = "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf"
@@ -80,33 +80,27 @@ def bezier(points: list[tuple[float, float]], steps: int = 80) -> list[tuple[flo
 
 
 def seal(draw: ImageDraw.ImageDraw, cx: int, cy: int, radius: int, text: str = "POE") -> None:
-    box = [
-        (cx - radius) * SCALE,
-        (cy - radius) * SCALE,
-        (cx + radius) * SCALE,
-        (cy + radius) * SCALE,
-    ]
-    draw.ellipse(box, outline=VERMILION, width=int(1.6 * SCALE))
-    inner = radius - 8
-    draw.ellipse(
-        [
-            (cx - inner) * SCALE,
-            (cy - inner) * SCALE,
-            (cx + inner) * SCALE,
-            (cy + inner) * SCALE,
-        ],
-        outline=VERMILION,
-        width=int(0.7 * SCALE),
+    size = radius * 2
+    left = (cx - radius) * SCALE
+    top = (cy - radius) * SCALE
+    right = (cx + radius) * SCALE
+    bottom = (cy + radius) * SCALE
+    draw.rectangle([left, top, right, bottom], outline=ACCENT, width=int(1.4 * SCALE))
+    inset = int(5 * SCALE)
+    draw.rectangle(
+        [left + inset, top + inset, right - inset, bottom - inset],
+        outline=ACCENT,
+        width=max(1, int(0.65 * SCALE)),
     )
-    label_font = font(SANS_BOLD, 11)
-    spaced_text(draw, (cx - 18, cy - 8), text, VERMILION, label_font, spacing=3)
+    label_font = font(SANS_BOLD, 10)
+    spaced_text(draw, (cx - 16, cy - 7), text, ACCENT, label_font, spacing=3)
     small = font(SANS, 7)
-    spaced_text(draw, (cx - 20, cy + 12), "RECORD", VERMILION, small, spacing=2)
+    spaced_text(draw, (cx - 20, cy + 11), "RECORD", ACCENT, small, spacing=2)
 
 
 def label_block(draw: ImageDraw.ImageDraw, title: str, place: str) -> None:
     example = font(SANS, 12)
-    spaced_text(draw, (90, 90), "DEMO RECORD", VERMILION, example, spacing=3)
+    spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, example, spacing=3)
     title_font = font(SERIF, 40)
     draw.text((90 * SCALE, 132 * SCALE), title, font=title_font, fill=INK)
     place_font = font(SANS, 14)
@@ -262,10 +256,10 @@ draw.arc(
     width=2 * SCALE,
 )
 draw.rectangle([292 * SCALE, 500 * SCALE, 316 * SCALE, 760 * SCALE], fill=IVORY)
-draw.ellipse([287 * SCALE, 470 * SCALE, 321 * SCALE, 535 * SCALE], fill=VERMILION)
+draw.ellipse([287 * SCALE, 470 * SCALE, 321 * SCALE, 535 * SCALE], fill=ACCENT)
 # Label sits in the dark negative space.
 eyebrow = font(SANS, 12)
-spaced_text(draw, (90, 90), "DEMO RECORD", VERMILION, eyebrow, spacing=3)
+spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, eyebrow, spacing=3)
 title_font = font(SERIF, 40)
 draw.text((90 * SCALE, 132 * SCALE), "A winter table, Copenhagen", font=title_font, fill=IVORY)
 place_font = font(SANS, 14)
@@ -289,7 +283,7 @@ draw = ImageDraw.Draw(image)
 draw.rectangle([0, 850 * SCALE, W * SCALE, H * SCALE], fill=SAND)
 draw.rectangle([0, 850 * SCALE, W * SCALE, 862 * SCALE], fill="#8e7b65")
 # Sun, flat disc.
-draw.ellipse([1110 * SCALE, 410 * SCALE, 1320 * SCALE, 620 * SCALE], fill=VERMILION)
+draw.ellipse([1110 * SCALE, 410 * SCALE, 1320 * SCALE, 620 * SCALE], fill=ACCENT)
 # Acacia tree.
 trunk = [
     (980 * SCALE, 850 * SCALE),
@@ -359,7 +353,7 @@ for base_x in [1040, 1120, 1200, 1280]:
     )
 # Grid label and rule.
 eyebrow = font(SANS, 12)
-spaced_text(draw, (90, 90), "DEMO RECORD", VERMILION, eyebrow, spacing=3)
+spaced_text(draw, (90, 90), "DEMO RECORD", ACCENT, eyebrow, spacing=3)
 title_font = font(SERIF, 40)
 draw.text((90 * SCALE, 132 * SCALE), "Tracking wild dogs, Okavango", font=title_font, fill=INK)
 place_font = font(SANS, 14)

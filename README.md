@@ -3,6 +3,7 @@
 **Proof that a human was there.**
 
 **Live demo:** [proof-of-experience.vercel.app](https://proof-of-experience.vercel.app)
+
 **Repository:** [github.com/subhajitlucky/proof-of-experience](https://github.com/subhajitlucky/proof-of-experience)
 
 Proof of Experience is an evidence and attestation layer for human-lived experience. A creator assembles a record of claims, media, participants, place and time. The application hashes the record, seals it with Ed25519, invites independent witnesses to sign specific claims, and publishes a verification page that shows what evidence exists, what was attested, and whether anything changed after signing.
@@ -36,7 +37,7 @@ It is not a blockchain, a social network, a generic notary, or a claim of absolu
 
 - Credentials authentication with NextAuth, optional Google OAuth, a seeded demo creator and admin account.
 - Draft creation with title, summary, category, public location label, optional private coordinates, start/end times, claims, participants, media and visibility.
-- Local or S3-compatible media storage, SHA-256 fingerprints, EXIF extraction, metadata stripping, and captured-at timestamps.
+- Local, S3-compatible or private Vercel Blob media storage, SHA-256 fingerprints, EXIF extraction, metadata stripping, and captured-at timestamps.
 - Hash-chained evidence events for creation, media, location, device context, invitations, attestations and publication.
 - Server-held Ed25519 record signing and server-mediated witness Ed25519 attestations using expiring, single-use bearer invitations.
 - Public verification pages with status/integrity banners, claims, witness counts, hashes, QR code, downloadable JSON, trust criteria, badge and embed snippet.
@@ -44,6 +45,10 @@ It is not a blockchain, a social network, a generic notary, or a claim of absolu
 - Dashboard with record list, draft editing, additional draft media, witness invitations, attestation progress, publish/unpublish, visibility, revoke and delete.
 - Admin desk with flag, unflag, revoke and restore actions. Admin actions are written to an append-only PostgreSQL audit log protected by a trigger.
 - A designed but deliberately unimplemented `AnchorProvider` interface for future external timestamping.
+
+### Visual direction
+
+The interface is a **public evidence registry**, not a generic editorial landing page. It uses a deep evergreen passport cover, chalk and sage document fields, squared stamps, ruled ledger tables, and a Newsreader/Manrope type pairing. Verification records read as public registry sheets: the trust criteria are laid out horizontally, the evidence timeline is a numbered ledger, and alert states use dark ink fields instead of a second accent colour.
 
 The public verification route is `/verify/[slug]`. The witness flow is `/attest/[token]`.
 
@@ -553,4 +558,4 @@ The interface deliberately says **evidence, not truth**.
 
 ## Fonts and assets
 
-Fraunces and Public Sans are self-hosted WOFF2 files. Their SIL Open Font License files are included in `public/fonts/`. Demo cover plates were generated for this repository by `scripts/generate-demo-images.py` and carry a Demo label. The test image in `tests/fixtures/print-studio.png` is also generated for this repository.
+Newsreader and Manrope are self-hosted WOFF2 files. Their SIL Open Font License files are included in `public/fonts/`. Demo cover plates were generated for this repository by `scripts/generate-demo-images.py` and carry a Demo label. The test image in `tests/fixtures/print-studio.png` is also generated for this repository.

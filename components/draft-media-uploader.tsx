@@ -67,7 +67,7 @@ export function DraftMediaUploader({
         or WebP, 8 MB each. Metadata is stripped before storage and hashing.
       </p>
       <div className="mt-3 flex flex-wrap items-center gap-3">
-        <label className="btn btn--outline btn--sm cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-vermilion">
+        <label className="btn btn--outline btn--sm cursor-pointer focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent">
           Choose images
           <input
             className="sr-only"

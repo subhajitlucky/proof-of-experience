@@ -169,7 +169,7 @@ export default async function AttestPage({ params }: PageProps) {
         </section>
 
         {invitation.record.integrityAltered ? (
-          <div className="mt-8 border border-vermilion bg-vermilion-wash p-5 text-sm text-vermilion-dark">
+          <div className="mt-8 border border-accent bg-accent-wash p-5 text-sm text-accent-deep">
             <p className="font-semibold">This record currently fails its integrity check.</p>
             <p className="mt-1 leading-6">
               Do not sign. Ask the creator to resolve the record before sending a new
